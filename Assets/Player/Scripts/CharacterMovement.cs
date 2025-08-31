@@ -21,9 +21,9 @@ public class CharacterMovement : MonoBehaviour
     private float horizontal = 0f;
     private float vertical = 0f;
 
-    public float sensitivity = 0f;
-    public float movingSpeed = 10f;
-    public float jumpHeight = 1f;
+    public float sensitivity;
+    public float movingSpeed;
+    public float jumpHeight;
 
     private bool isGrounded = false;
 
@@ -41,8 +41,8 @@ public class CharacterMovement : MonoBehaviour
         CameraMovement();
         Movement();
         Running();
-        Jump();
         Gravity();
+        Jump();
     }
 
     private void GetMouseInput()
@@ -89,22 +89,28 @@ public class CharacterMovement : MonoBehaviour
     
     private void Running()
     {
-        movingSpeed = 10f;
+        movingSpeed = 5f;
 
         if (Keyboard.current.leftShiftKey.isPressed)
         {
-            movingSpeed = 20f;
+            movingSpeed = 10f;
         }
     }
 
     private void Jump()
     {
-        isGrounded = characterController.isGrounded || velocity.y < 0.01f;
-
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if (characterController.isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
         }
+    }
+
+    private void Gravity()
+    {
+        velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
 
@@ -112,11 +118,5 @@ public class CharacterMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-    }
-
-    private void Gravity()
-    {
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
     }
 }
