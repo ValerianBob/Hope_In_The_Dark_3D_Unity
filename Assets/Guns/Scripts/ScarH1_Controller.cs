@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class ScarH1_Controller : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class ScarH1_Controller : MonoBehaviour
     private float fireRate = 0.1f;
 
     private float nextFireTime = 0f;
+
+    //bullets
+    private const int bulletsInMagasine = 20;
+
+    public int currentBulletsInMagasine = 0;
+    public int bulletsInInventory = 90;
 
     void Start()
     {
