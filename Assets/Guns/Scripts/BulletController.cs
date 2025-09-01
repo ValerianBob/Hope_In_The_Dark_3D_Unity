@@ -12,12 +12,12 @@ public class BulletController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        Invoke("DestroyBullet", 2f);
+        //Invoke("DestroyBullet", 2f);
     }
 
     void Update()
     {
-        rb.linearVelocity = direction * speed;
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     private void DestroyBullet()
