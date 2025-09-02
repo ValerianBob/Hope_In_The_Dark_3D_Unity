@@ -15,6 +15,11 @@ public class AnimationController : MonoBehaviour
     {
         _animator.SetTrigger("Idle");
 
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            _animator.SetTrigger("Fire");
+        }
+
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             _animator.SetTrigger("CheckSkin");

@@ -10,15 +10,10 @@ public class TargetController : MonoBehaviour
         spawnController = GameObject.Find("ScriptsObject").GetComponent<SpawnController>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Death()
     {
-        if (other.CompareTag("Bullet"))
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-
-            spawnController.currentTargetCount -= 1;
-        }
+        Destroy(gameObject);
+        spawnController.currentTargetCount -= 1;
     }
 }
 
