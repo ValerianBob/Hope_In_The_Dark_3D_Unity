@@ -22,9 +22,11 @@ public class CharacterMovement : MonoBehaviour
     private float vertical = 0f;
 
     public float sensitivity;
-    public float movingSpeed;
-    public float jumpHeight;
 
+    public float movingSpeed;
+
+    public float jumpHeight;
+    
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -65,10 +67,6 @@ public class CharacterMovement : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
         }
-
-        //Running();
-        //Gravity();
-        //Jump();
     }
 
     private void GetMouseInput()
@@ -77,16 +75,15 @@ public class CharacterMovement : MonoBehaviour
 
         rotation.x += mouseDelta.x * sensitivity;
         rotation.y -= mouseDelta.y * sensitivity;
+
+        rotation.y = Mathf.Clamp(rotation.y, -80f, 80f);
     }
 
     private void CameraMovement()
     {
-        rotation.y = Mathf.Clamp(rotation.y, -80f, 80f);
-
         mainCamera.transform.localRotation = Quaternion.Euler(rotation.y, 0f, 0f);
         transform.rotation = Quaternion.Euler(0f, rotation.x, 0f);
     }
-
     private void Movement()
     {
         vertical = 0f;
@@ -112,39 +109,18 @@ public class CharacterMovement : MonoBehaviour
         moveDir = transform.right * horizontal + transform.forward * vertical;
         characterController.Move(moveDir * movingSpeed * Time.deltaTime);
     }
-    
-    private void Running()
-    {
-        movingSpeed = 5f;
-        
-        characterController.Move(velocity * Time.deltaTime);
 
-        if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
+    public void ApplyRecoil(float recoilVertical, float recoilHorizontal)
+    {
+        rotation.y -= recoilVertical;
+
+        if (Random.Range(0, 2) == 0)
         {
-            movingSpeed = 10f;
+            rotation.x += recoilHorizontal;
         }
-    }
-
-    private void Jump()
-    {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        else
         {
-            if (characterController.isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-        }
-    }
-
-    private void Gravity()
-    {
-        velocity.y += gravity * Time.deltaTime;
-
-        characterController.Move(velocity * Time.deltaTime);
-
-        if (characterController.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
+            rotation.x -= recoilHorizontal;
         }
     }
 }

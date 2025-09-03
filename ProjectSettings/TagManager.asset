@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Target
   - Bullet
+  - Ammo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

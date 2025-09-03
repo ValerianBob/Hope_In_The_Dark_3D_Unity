@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8375574175557083298}
   - component: {fileID: 4800183625400678596}
   - component: {fileID: 4336358629858883301}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -152,23 +152,23 @@ GameObject:
   - component: {fileID: 2713458874177719579}
   - component: {fileID: 3695545055100365462}
   - component: {fileID: 4411854257831350420}
-  m_Layer: 0
+  - component: {fileID: 346532352035948877}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8243670350696121965
-Transform:
+--- !u!224 &8243670350696121965
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4824972199630932298}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.39, y: 1.78, z: 11.91}
+  m_LocalPosition: {x: 0, y: 0, z: 2.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -176,6 +176,11 @@ Transform:
   - {fileID: 4609220828204684569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.21, y: 4.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &4415236348905858475
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -293,6 +298,24 @@ MonoBehaviour:
   sensitivity: 0.2
   movingSpeed: 5
   jumpHeight: 1.5
+--- !u!114 &346532352035948877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824972199630932298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955d423a669ea44a9c880552d55058c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 8375574175557083298}
+  lootingRange: 4
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 55
+  ItemInfo: {fileID: 0}
 --- !u!1 &7690581164828631243
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +328,7 @@ GameObject:
   - component: {fileID: 6903655650569726198}
   - component: {fileID: 915303054057935798}
   - component: {fileID: 2062996084372255608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,6 +492,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScarH1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9960cd34a505e354c9c6bbdd4b04b2da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9960cd34a505e354c9c6bbdd4b04b2da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9960cd34a505e354c9c6bbdd4b04b2da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -540,7 +575,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 8375574175557083298}
+  characterMovement: {fileID: 4411854257831350420}
   bulletsInMagazineText: {fileID: 0}
   bulletsInInventoryText: {fileID: 0}
+  fireRate: 0.1
+  verticalRecoil: 1
+  horizontalRecoil: 1
+  maxBulletsInMagazine: 20
   currentBulletsInMagasine: 0
   bulletsInInventory: 90
+  reloadTime: 2

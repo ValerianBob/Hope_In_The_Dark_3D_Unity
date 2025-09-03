@@ -5,24 +5,35 @@ using UnityEngine.InputSystem;
 
 public class ScarH1_Controller : MonoBehaviour
 {
-    public Camera Camera;
-
     private Ray ray;
     private RaycastHit hit;
 
+    private float nextFireTime = 0f;
+
+    private bool isReloading = false;
+
+    public Camera Camera;
+
+    public CharacterMovement characterMovement;
+
+    [Header("Bullets Text Settings")]
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
 
-    private float fireRate = 0.1f;
+    [Header("FireRate Settings")]
+    public float fireRate = 0.1f;
 
-    private float nextFireTime = 0f;
+    [Header("Recoil Settings")]
+    public float verticalRecoil = 1f;
+    public float horizontalRecoil = 1f;
 
+    [Header("Bullets Settings")]
     public int maxBulletsInMagazine = 20;
     public int currentBulletsInMagasine = 0;
     public int bulletsInInventory = 90;
-    public int reloadTime = 2;
 
-    private bool isReloading = false;
+    [Header("Reload Settings")]
+    public int reloadTime = 2;
 
     void Start()
     {
@@ -37,13 +48,13 @@ public class ScarH1_Controller : MonoBehaviour
         if (Mouse.current.leftButton.isPressed && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0)
         {
             Shot();
+
             nextFireTime = Time.time + fireRate;
         }
 
         if (Keyboard.current.rKey.wasPressedThisFrame && currentBulletsInMagasine != maxBulletsInMagazine && !isReloading)
         {
             StartCoroutine(Reload());
-            
         }
     }
 
@@ -73,9 +84,13 @@ public class ScarH1_Controller : MonoBehaviour
                 currentBulletsInMagasine -= 1;
                 bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
 
+                Debug.Log("Hit nothing");
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+
                 SoundsController.Instance.PlayGunShot(0, transform.position);
             }
         }
+        characterMovement.ApplyRecoil(verticalRecoil, horizontalRecoil);
     }
 
     private IEnumerator Reload()
