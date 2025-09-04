@@ -10957,8 +10957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80.1, y: -10.8}
-  m_SizeDelta: {x: 120, y: 30}
+  m_AnchoredPosition: {x: 121.5, y: -10.8}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735506597
 MonoBehaviour:
@@ -10989,8 +10989,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11007,8 +11007,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11093,8 +11093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84.9, y: 18.5}
-  m_SizeDelta: {x: 150, y: 30}
+  m_AnchoredPosition: {x: 118.4, y: 22}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744642939
 MonoBehaviour:
@@ -11143,8 +11143,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22338,6 +22338,14 @@ PrefabInstance:
       propertyPath: ItemInfo
       value: 
       objectReference: {fileID: 744642939}
+    - target: {fileID: 346532352035948877, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
+      propertyPath: ActionText
+      value: 
+      objectReference: {fileID: 735506597}
+    - target: {fileID: 346532352035948877, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
+      propertyPath: lootingTextObject
+      value: 
+      objectReference: {fileID: 1976978703}
     - target: {fileID: 4824972199630932298, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: m_Name
       value: Player

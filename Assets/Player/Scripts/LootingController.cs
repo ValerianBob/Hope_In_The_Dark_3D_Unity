@@ -1,19 +1,28 @@
+using System.Collections;
+using System.Security.Cryptography;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LootingController : MonoBehaviour
 {
-    public Camera Camera;
-
     private Ray ray;
     private RaycastHit hit;
+
+    private float textFadeDuration = 0.3f;
+
+    private float alpha = 0f;
+    private bool isVisible = false;
+
+    public Camera Camera;
 
     public float lootingRange;
 
     public LayerMask hitMask;
 
     public TextMeshProUGUI ItemInfo;
+    public TextMeshProUGUI ActionText;
 
     void Update()
     {
@@ -21,20 +30,62 @@ public class LootingController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, lootingRange, hitMask))
         {
-            Debug.Log("Looting Object : " + hit.collider.name);
-
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                if (hit.collider.gameObject.CompareTag("Ammo"))
-                {
-                    ItemInfo.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo.ToString();
-                    hit.collider.gameObject.GetComponent<AmmoBoxController>().TakeAmmo();
-
-                    SoundsController.Instance.PlayLooting(0,transform.position);
-                }
-            }
+            InteractLootingText();
+            ShowOrHideText();
+        }
+        else
+        {
+            isVisible = false;
+            ShowOrHideText();
         }
 
         Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
+    }
+
+    private void InteractLootingText()
+    {
+        if (hit.collider.CompareTag("Ammo"))
+        {
+            isVisible = true;
+
+            LootAmmo();
+            ShowOrHideText();
+        }
+        else
+        {
+            isVisible = false;
+        }
+    }
+
+    private void LootAmmo()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            hit.collider.gameObject.GetComponent<AmmoBoxController>().TakeAmmo();
+
+            SoundsController.Instance.PlayLooting(0, transform.position);
+        }
+    }
+
+    private void ShowOrHideText()
+    {
+        if (isVisible && alpha < 1f)
+        {
+            alpha += Time.deltaTime / textFadeDuration;
+        }
+        else if (!isVisible && alpha > 0f)
+        {
+            alpha -= Time.deltaTime / textFadeDuration;
+        }
+
+        alpha = Mathf.Clamp01(alpha);
+
+        Color ItemInfoColor = ItemInfo.color;
+        Color ActionTextColor = ActionText.color;
+
+        ItemInfo.color = new Color(ItemInfoColor.r, ItemInfoColor.g, ItemInfoColor.b, alpha);
+        ActionText.color = new Color(ActionTextColor.r, ActionTextColor.g, ActionTextColor.b, alpha);
     }
 }
