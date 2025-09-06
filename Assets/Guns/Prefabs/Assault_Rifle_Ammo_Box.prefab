@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.02048
+      value: 34.95324
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.0062664
+      value: 3.3010437
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoInfo: 7.62 ammo
-  ammoAmount: 30
+  ammoAmount: 10

@@ -16,6 +16,8 @@ public class ScarH1_Controller : MonoBehaviour
 
     public CharacterMovement characterMovement;
 
+    public InventoryController inventory;
+
     [Header("Bullets Text Settings")]
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
@@ -30,7 +32,6 @@ public class ScarH1_Controller : MonoBehaviour
     [Header("Bullets Settings")]
     public int maxBulletsInMagazine = 20;
     public int currentBulletsInMagasine = 0;
-    public int bulletsInInventory = 90;
 
     [Header("Reload Settings")]
     public int reloadTime = 2;
@@ -38,13 +39,16 @@ public class ScarH1_Controller : MonoBehaviour
     void Start()
     {
         bulletsInMagazineText.text = maxBulletsInMagazine.ToString();
-        bulletsInInventoryText.text = bulletsInInventory.ToString();
+        bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
 
-        currentBulletsInMagasine = maxBulletsInMagazine;
+        currentBulletsInMagasine = 20;
     }
 
     void Update()
     {
+        bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
+        bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
+
         if (Mouse.current.leftButton.isPressed && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0)
         {
             Shot();
@@ -101,19 +105,19 @@ public class ScarH1_Controller : MonoBehaviour
 
         int bulletsNeeded = maxBulletsInMagazine - currentBulletsInMagasine;
 
-        if (bulletsInInventory >= bulletsNeeded)
+        if (inventory.Ammo7_62 >= bulletsNeeded)
         {
             currentBulletsInMagasine += bulletsNeeded;
-            bulletsInInventory -= bulletsNeeded;
+            inventory.Ammo7_62 -= bulletsNeeded;
         }
         else
         {
-            currentBulletsInMagasine += bulletsInInventory;
-            bulletsInInventory = 0;
+            currentBulletsInMagasine += inventory.Ammo7_62;
+            inventory.Ammo7_62 = 0;
         }
 
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-        bulletsInInventoryText.text = bulletsInInventory.ToString();
+        bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
 
         isReloading = false;
     }

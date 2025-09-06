@@ -17,12 +17,19 @@ public class LootingController : MonoBehaviour
 
     public Camera Camera;
 
+    private InventoryController inventory;
+
     public float lootingRange;
 
     public LayerMask hitMask;
 
     public TextMeshProUGUI ItemInfo;
     public TextMeshProUGUI ActionText;
+
+    private void Start()
+    {
+        inventory = GetComponent<InventoryController>();
+    }
 
     void Update()
     {
@@ -39,7 +46,7 @@ public class LootingController : MonoBehaviour
             ShowOrHideText();
         }
 
-        Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
+        //Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
     }
 
     private void InteractLootingText()
@@ -63,6 +70,14 @@ public class LootingController : MonoBehaviour
 
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
+            if (hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo == "7.62 ammo")
+            {
+                inventory.Ammo7_62 += hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoAmount;
+            }
+            else if (hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo == "9mm Ammo")
+            {
+                inventory.Ammo9mm += hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoAmount;
+            }
             hit.collider.gameObject.GetComponent<AmmoBoxController>().TakeAmmo();
 
             SoundsController.Instance.PlayLooting(0, transform.position);
