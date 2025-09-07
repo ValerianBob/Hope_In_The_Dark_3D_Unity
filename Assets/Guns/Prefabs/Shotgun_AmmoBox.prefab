@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8775762987846945274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40.218693
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0641155
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9773978
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.21140866
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -24.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cf5daea4b88f02548ba25c5018c066c1, type: 2}
+    - target: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_Name
+      value: Shotgun_AmmoBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      propertyPath: m_TagString
+      value: Ammo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5325901945847520161}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7247752815095756975}
+  m_SourcePrefab: {fileID: 100100000, guid: f048af4fed92e594d86438f99631381b, type: 3}
+--- !u!1 &8433179559577154731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+  m_PrefabInstance: {fileID: 8775762987846945274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5325901945847520161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433179559577154731}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7247752815095756975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433179559577154731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e78ba7e9e8d2746aecf584b64b27c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoInfo: ShotGun Ammo
+  ammoAmount: 5

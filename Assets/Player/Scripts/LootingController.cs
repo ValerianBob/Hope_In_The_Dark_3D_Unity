@@ -58,6 +58,11 @@ public class LootingController : MonoBehaviour
             LootAmmo();
             ShowOrHideText();
         }
+        else if (hit.collider.CompareTag("Gun"))
+        {
+            LootGun();
+            ShowOrHideText();
+        }
         else
         {
             isVisible = false;
@@ -78,10 +83,21 @@ public class LootingController : MonoBehaviour
             {
                 inventory.Ammo9mm += hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoAmount;
             }
+            else if (hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo == "ShotGun Ammo")
+            {
+                inventory.AmmoShotGun += hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoAmount;
+            }
             hit.collider.gameObject.GetComponent<AmmoBoxController>().TakeAmmo();
 
             SoundsController.Instance.PlayLooting(0, transform.position);
         }
+    }
+
+    private void LootGun()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo.ToString();
+
+
     }
 
     private void ShowOrHideText()

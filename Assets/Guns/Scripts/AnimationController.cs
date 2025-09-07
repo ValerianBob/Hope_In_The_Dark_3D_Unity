@@ -24,5 +24,10 @@ public class AnimationController : MonoBehaviour
         {
             _animator.SetTrigger("CheckSkin");
         }
+
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            _animator.SetTrigger("Reload");
+        }
     }
 }

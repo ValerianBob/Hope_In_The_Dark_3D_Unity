@@ -4,16 +4,18 @@ using UnityEngine.InputSystem;
 
 public class InventoryController : MonoBehaviour
 {
+    public List<GameObject> allGuns = new List<GameObject>();
+
     public List<GameObject> gunsInInventory = new List<GameObject>();
 
     public int Ammo7_62 = 90;
     public int Ammo9mm = 30;
-
+    public int AmmoShotGun = 25;
     void Start()
     {
         
     }
-
+    
     
     void Update()
     {
