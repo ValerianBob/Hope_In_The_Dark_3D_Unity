@@ -7,6 +7,7 @@ public class SoundsController : MonoBehaviour
 
     [Header("Sound Clips Settings")]
     public AudioClip[] GunShots;
+    public AudioClip[] GunTake;
     public AudioClip[] Looting;
     public AudioClip[] Musics;
 
@@ -42,6 +43,11 @@ public class SoundsController : MonoBehaviour
     public void PlayGunShot(int index, Vector3 soundPosition)
     {
         AudioSource.PlayClipAtPoint(GunShots[index], soundPosition, 1f);
+    }
+
+    public void PlayGunTake(int index, Vector3 soundPosition)
+    {
+        AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, 1f);
     }
 
     public void PlayLooting(int index, Vector3 soundPosition)

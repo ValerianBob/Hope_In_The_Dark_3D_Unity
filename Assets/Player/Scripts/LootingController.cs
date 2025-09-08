@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Xml;
 using TMPro;
@@ -46,7 +47,7 @@ public class LootingController : MonoBehaviour
             ShowOrHideText();
         }
 
-        //Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
+        Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
     }
 
     private void InteractLootingText()
@@ -60,6 +61,8 @@ public class LootingController : MonoBehaviour
         }
         else if (hit.collider.CompareTag("Gun"))
         {
+            isVisible = true;
+
             LootGun();
             ShowOrHideText();
         }
@@ -95,9 +98,28 @@ public class LootingController : MonoBehaviour
 
     private void LootGun()
     {
-        ItemInfo.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo.ToString();
+        ItemInfo.text = hit.collider.gameObject.GetComponent<LootGunController>().GunInfo.ToString();
 
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            if (inventory.MainGun == null && hit.collider.gameObject.GetComponent<LootGunController>().isMainGun)
+            {
+                inventory.MainGun = hit.collider.gameObject.GetComponent<LootGunController>().gunObject;
+                hit.collider.gameObject.GetComponent<LootGunController>().gunIcon.gameObject.SetActive(true);
+                hit.collider.gameObject.GetComponent<LootGunController>().TakeGun();
 
+                SoundsController.Instance.PlayGunTake(0, transform.position);
+            }
+
+            if (inventory.Pistol == null && !hit.collider.gameObject.GetComponent<LootGunController>().isMainGun)
+            {
+                inventory.Pistol = hit.collider.gameObject.GetComponent<LootGunController>().gunObject;
+                hit.collider.gameObject.GetComponent<LootGunController>().gunIcon.gameObject.SetActive(true);
+                hit.collider.gameObject.GetComponent<LootGunController>().TakeGun();
+
+                SoundsController.Instance.PlayGunTake(0, transform.position);
+            }
+        }
     }
 
     private void ShowOrHideText()

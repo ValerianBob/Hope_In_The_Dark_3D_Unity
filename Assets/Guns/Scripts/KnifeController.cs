@@ -52,6 +52,6 @@ public class KnifeController : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(ray.origin, ray.direction * hitRange, Color.purple);
+        //Debug.DrawRay(ray.origin, ray.direction * hitRange, Color.purple);
     }
 }

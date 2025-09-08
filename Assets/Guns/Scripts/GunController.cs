@@ -55,6 +55,10 @@ public class GunController : MonoBehaviour
 
             nextFireTime = Time.time + fireRate;
         }
+        else if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine == 0)
+        {
+            SoundsController.Instance.PlayGunShot(0, transform.position);
+        }
 
         if (Keyboard.current.rKey.wasPressedThisFrame && currentBulletsInMagasine != maxBulletsInMagazine && !isReloading)
         {
@@ -81,7 +85,7 @@ public class GunController : MonoBehaviour
                 currentBulletsInMagasine -= 1;
                 bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
 
-                SoundsController.Instance.PlayGunShot(0, transform.position);
+                SoundsController.Instance.PlayGunShot(2, transform.position);
             }
             else
             {
@@ -91,7 +95,7 @@ public class GunController : MonoBehaviour
                 Debug.Log("Hit nothing");
                 Debug.DrawLine(ray.origin, hit.point, Color.red);
 
-                SoundsController.Instance.PlayGunShot(0, transform.position);
+                SoundsController.Instance.PlayGunShot(2, transform.position);
             }
         }
         characterMovement.ApplyRecoil(verticalRecoil, horizontalRecoil);

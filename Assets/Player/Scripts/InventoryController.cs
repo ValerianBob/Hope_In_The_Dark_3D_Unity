@@ -1,57 +1,95 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
-    public List<GameObject> allGuns = new List<GameObject>();
-
-    public List<GameObject> gunsInInventory = new List<GameObject>();
+    public GameObject MainGun;
+    public GameObject Pistol;
+    public GameObject Knife;
 
     public int Ammo7_62 = 90;
     public int Ammo9mm = 30;
     public int AmmoShotGun = 25;
-    void Start()
+
+    public Image[] gunSlots;
+
+    private Color32 slotColor = new Color32(0, 0, 0, 165);
+    private Color32 selectedColor = new Color32(150, 150, 150, 165);
+
+    private void Start()
     {
-        
+        ChangeCurrentGunSlotUI(0);
     }
-    
-    
+
     void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (Keyboard.current.digit1Key.wasPressedThisFrame && MainGun != null)
         {
-            SelectGun(2);
+            MainGun.SetActive(true);
+
+            if (Pistol != null)
+            {
+                Pistol.SetActive(false);
+            }
+            
+            Knife.SetActive(false);
+
+            ChangeCurrentGunSlotUI(2);
+
+            SoundsController.Instance.PlayGunTake(1, transform.position);
         }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+
+        if (Keyboard.current.digit2Key.wasPressedThisFrame && Pistol != null)
         {
-            SelectGun(1);
+            if (MainGun != null)
+            {
+                MainGun.SetActive(false);
+            }
+
+            Pistol.SetActive(true);
+
+            Knife.SetActive(false);
+
+            ChangeCurrentGunSlotUI(1);
+
+            SoundsController.Instance.PlayGunTake(1, transform.position);
         }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
         {
-            SelectGun(0);
+            if (MainGun != null)
+            {
+                MainGun.SetActive(false);
+            }
+
+            if (Pistol != null)
+            {
+                Pistol.SetActive(false);
+            }
+
+            Knife.SetActive(true);
+
+            ChangeCurrentGunSlotUI(0);
+
+            SoundsController.Instance.PlayGunTake(1, transform.position);
         }
     }
 
-    private void SelectGun(int index)
+    private void ChangeCurrentGunSlotUI(int index)
     {
-        if (index < 0 || index >= gunsInInventory.Count)
-        {
-            return;
-        }
-
-        gunsInInventory[index].SetActive(true);
-
-        for (int i = 0; i < gunsInInventory.Count; i++)
+        for(int i = 0; i < gunSlots.Length; i++)
         {
             if (i == index)
             {
-                continue;
+                gunSlots[index].color = selectedColor;
             }
-            if (gunsInInventory[i] != null)
+            else
             {
-                gunsInInventory[i].SetActive(false);
-            }   
+                gunSlots[i].color = slotColor;
+            }
         }
     }
 }

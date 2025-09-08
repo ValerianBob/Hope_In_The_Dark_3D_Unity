@@ -353,5 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04786520091d9bd46931713cc70f7da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   GunInfo: Remington
-  isMainGun: 0
+  gunIcon: {fileID: 0}
+  isMainGun: 1
