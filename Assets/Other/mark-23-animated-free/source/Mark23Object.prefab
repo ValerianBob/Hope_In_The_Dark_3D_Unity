@@ -67,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75b1ca59bee5a8d43a354bcfffeb8900, type: 3}
       insertIndex: -1
       addedObject: {fileID: 960828543725130260}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75b1ca59bee5a8d43a354bcfffeb8900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7404590096673541623}
   m_SourcePrefab: {fileID: 100100000, guid: 75b1ca59bee5a8d43a354bcfffeb8900, type: 3}
 --- !u!1 &941712204329500351 stripped
 GameObject:
@@ -92,8 +95,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06552935, y: 0.22475171, z: 0.2812863}
-  m_Center: {x: 0.10751575, y: 1.450044, z: 0.06298757}
+  m_Size: {x: 0.14668077, y: 0.1889888, z: 0.27419272}
+  m_Center: {x: 0.10755508, y: 1.462318, z: 0.06197144}
 --- !u!114 &960828543725130260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,5 +109,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04786520091d9bd46931713cc70f7da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
   GunInfo: Mark23
+  LootInfo: Press E to take gun
+  gunIcon: {fileID: 0}
   isMainGun: 0
+--- !u!54 &7404590096673541623
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941712204329500351}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

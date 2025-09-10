@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,21 +11,84 @@ public class InventoryController : MonoBehaviour
     public GameObject Pistol;
     public GameObject Knife;
 
+    //[HideInInspector]
+    public GameObject MainGunObject;
+    //[HideInInspector]
+    public GameObject PistolObject;
+
     public int Ammo7_62 = 90;
     public int Ammo9mm = 30;
     public int AmmoShotGun = 25;
 
     public Image[] gunSlots;
+    public RawImage MainGunIcon;
+    public RawImage PistolIcon;
 
     private Color32 slotColor = new Color32(0, 0, 0, 165);
     private Color32 selectedColor = new Color32(150, 150, 150, 165);
 
+    public TextMeshProUGUI dropGunText;
+
+    public GameObject DropPoint;
+
     private void Start()
     {
         ChangeCurrentGunSlotUI(0);
+        dropGunText.gameObject.SetActive(false);
     }
 
     void Update()
+    {
+        ChangeGun();
+
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            if (MainGun != null && MainGun.activeInHierarchy)
+            {
+                // Set Main Gun null
+                MainGun.SetActive(false);
+                MainGun = null;
+                MainGunIcon.gameObject.SetActive(false);
+                MainGunIcon = null;
+
+                // Show knife
+                ChangeCurrentGunSlotUI(0);
+                Knife.SetActive(true);
+                dropGunText.gameObject.SetActive(false);
+
+                // Drop Gun
+                GameObject gun = Instantiate(MainGunObject, DropPoint.transform.position, MainGunObject.transform.rotation);
+                gun.SetActive(true);
+
+                MainGunObject = null;
+            }
+            else if (Pistol != null && Pistol.activeInHierarchy)
+            {
+                // Set Main Gun null
+                Pistol.SetActive(false);
+                Pistol = null;
+                PistolIcon.gameObject.SetActive(false);
+                PistolIcon = null;
+
+                // Show knife
+                ChangeCurrentGunSlotUI(0);
+                Knife.SetActive(true);
+                dropGunText.gameObject.SetActive(false);
+
+                // Drop Gun
+                GameObject gun = Instantiate(PistolObject, DropPoint.transform.position, PistolObject.transform.rotation);
+                gun.SetActive(true);
+
+                PistolObject = null;
+            }
+            else
+            {
+                Debug.Log("I am holding Knife");
+            }
+        }
+    }
+
+    private void ChangeGun()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame && MainGun != null)
         {
@@ -34,10 +98,11 @@ public class InventoryController : MonoBehaviour
             {
                 Pistol.SetActive(false);
             }
-            
+
             Knife.SetActive(false);
 
             ChangeCurrentGunSlotUI(2);
+            dropGunText.gameObject.SetActive(true);
 
             SoundsController.Instance.PlayGunTake(1, transform.position);
         }
@@ -54,6 +119,7 @@ public class InventoryController : MonoBehaviour
             Knife.SetActive(false);
 
             ChangeCurrentGunSlotUI(1);
+            dropGunText.gameObject.SetActive(true);
 
             SoundsController.Instance.PlayGunTake(1, transform.position);
         }
@@ -73,6 +139,7 @@ public class InventoryController : MonoBehaviour
             Knife.SetActive(true);
 
             ChangeCurrentGunSlotUI(0);
+            dropGunText.gameObject.SetActive(false);
 
             SoundsController.Instance.PlayGunTake(1, transform.position);
         }

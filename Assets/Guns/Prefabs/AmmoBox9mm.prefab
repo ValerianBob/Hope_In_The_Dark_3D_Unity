@@ -22,35 +22,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.104763
+      value: 38.332
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.014
+      value: 1.0076002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3697927
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.6267563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.6267565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.3273781
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.3273782
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 55.159
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 05d9569fc01615e4da94bb95af11e3dd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoInfo: 9mm Ammo
+  LootInfo: Press E to take Ammo
   ammoAmount: 10

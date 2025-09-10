@@ -314,6 +314,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 699889b463499de48bd7818eda6644a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4103233623059912282}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 699889b463499de48bd7818eda6644a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2380859474459399066}
   m_SourcePrefab: {fileID: 100100000, guid: 699889b463499de48bd7818eda6644a2, type: 3}
 --- !u!1 &2400764380793928009 stripped
 GameObject:
@@ -355,5 +358,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunObject: {fileID: 0}
   GunInfo: Remington
+  LootInfo: Press E to take gun
   gunIcon: {fileID: 0}
   isMainGun: 1
+--- !u!54 &2380859474459399066
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400764380793928009}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

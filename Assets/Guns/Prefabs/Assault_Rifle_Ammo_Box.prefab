@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.95324
+      value: 35.69442
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3010437
+      value: 3.0346792
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97934014
+      value: 0.97922295
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.20222016
+      value: -0.20278652
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 23.334
+      value: -23.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 828cf20eb006ef844893ed59dfe5faa7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -126,4 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoInfo: 7.62 ammo
+  LootInfo: Press E to take Ammo
   ammoAmount: 10

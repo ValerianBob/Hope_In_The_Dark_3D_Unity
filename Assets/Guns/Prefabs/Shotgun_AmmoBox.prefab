@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoInfo: ShotGun Ammo
+  LootInfo: Press E to take Ammo
   ammoAmount: 5

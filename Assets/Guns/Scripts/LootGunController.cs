@@ -6,6 +6,7 @@ public class LootGunController : MonoBehaviour
     public GameObject gunObject;
 
     public string GunInfo;
+    public string LootInfo;
 
     public RawImage gunIcon;
 
@@ -13,6 +14,6 @@ public class LootGunController : MonoBehaviour
 
     public void TakeGun()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

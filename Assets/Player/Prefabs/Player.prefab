@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1562834147122565784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2739509034433591762}
+  m_Layer: 3
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2739509034433591762
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562834147122565784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8243670350696121965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4349500908789519766
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +215,7 @@ RectTransform:
   m_Children:
   - {fileID: 4669214643917134023}
   - {fileID: 4609220828204684569}
+  - {fileID: 2739509034433591762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -338,6 +374,8 @@ MonoBehaviour:
   MainGun: {fileID: 0}
   Pistol: {fileID: 0}
   Knife: {fileID: 6270992824654982551}
+  MainGunObject: {fileID: 0}
+  PistolObject: {fileID: 0}
   Ammo7_62: 90
   Ammo9mm: 30
   AmmoShotGun: 25
@@ -345,6 +383,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  MainGunIcon: {fileID: 0}
+  PistolIcon: {fileID: 0}
+  dropGunText: {fileID: 0}
+  DropPoint: {fileID: 1562834147122565784}
 --- !u!1 &7690581164828631243
 GameObject:
   m_ObjectHideFlags: 0

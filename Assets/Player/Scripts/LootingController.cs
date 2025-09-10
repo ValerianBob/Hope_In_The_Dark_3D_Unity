@@ -75,6 +75,7 @@ public class LootingController : MonoBehaviour
     private void LootAmmo()
     {
         ItemInfo.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().ammoInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<AmmoBoxController>().LootInfo.ToString();
 
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -99,12 +100,17 @@ public class LootingController : MonoBehaviour
     private void LootGun()
     {
         ItemInfo.text = hit.collider.gameObject.GetComponent<LootGunController>().GunInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<LootGunController>().LootInfo.ToString();
 
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (inventory.MainGun == null && hit.collider.gameObject.GetComponent<LootGunController>().isMainGun)
             {
                 inventory.MainGun = hit.collider.gameObject.GetComponent<LootGunController>().gunObject;
+
+                inventory.MainGunObject = hit.collider.gameObject;
+                inventory.MainGunIcon = hit.collider.gameObject.GetComponent<LootGunController>().gunIcon;
+
                 hit.collider.gameObject.GetComponent<LootGunController>().gunIcon.gameObject.SetActive(true);
                 hit.collider.gameObject.GetComponent<LootGunController>().TakeGun();
 
@@ -114,6 +120,10 @@ public class LootingController : MonoBehaviour
             if (inventory.Pistol == null && !hit.collider.gameObject.GetComponent<LootGunController>().isMainGun)
             {
                 inventory.Pistol = hit.collider.gameObject.GetComponent<LootGunController>().gunObject;
+
+                inventory.PistolObject = hit.collider.gameObject;
+                inventory.PistolIcon = hit.collider.gameObject.GetComponent<LootGunController>().gunIcon;
+
                 hit.collider.gameObject.GetComponent<LootGunController>().gunIcon.gameObject.SetActive(true);
                 hit.collider.gameObject.GetComponent<LootGunController>().TakeGun();
 
