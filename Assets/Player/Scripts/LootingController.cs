@@ -5,6 +5,7 @@ using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LootingController : MonoBehaviour
 {
@@ -19,17 +20,27 @@ public class LootingController : MonoBehaviour
     public Camera Camera;
 
     private InventoryController inventory;
+    private CharacterMovement characterMovement;
 
     public float lootingRange;
 
     public LayerMask hitMask;
 
+    [Header("Looting Text")]
     public TextMeshProUGUI ItemInfo;
     public TextMeshProUGUI ActionText;
+
+    [Header("Reading Text Window")]
+    public GameObject ReadingWindow;
+    public TextMeshProUGUI noteText;
+    public Button bEnter;
 
     private void Start()
     {
         inventory = GetComponent<InventoryController>();
+        characterMovement = GetComponent<CharacterMovement>();
+
+        bEnter.onClick.AddListener(StopReadingNote);
     }
 
     void Update()
@@ -64,6 +75,13 @@ public class LootingController : MonoBehaviour
             isVisible = true;
 
             LootGun();
+            ShowOrHideText();
+        }
+        else if (hit.collider.CompareTag("Laptop"))
+        {
+            isVisible = true;
+
+            ReadNote();
             ShowOrHideText();
         }
         else
@@ -130,6 +148,33 @@ public class LootingController : MonoBehaviour
                 SoundsController.Instance.PlayGunTake(0, transform.position);
             }
         }
+    }
+
+    private void ReadNote()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<LaptopController>().LaptopInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<LaptopController>().LootInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            characterMovement.isReading = true;
+            ReadingWindow.SetActive(true);
+
+            noteText.text = hit.collider.gameObject.GetComponent<LaptopController>().NoteText;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
+            SoundsController.Instance.PlayLooting(1, transform.position);
+        }
+    }
+
+    private void StopReadingNote()
+    {
+        characterMovement.isReading = false;
+        ReadingWindow.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void ShowOrHideText()

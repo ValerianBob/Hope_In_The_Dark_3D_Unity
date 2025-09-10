@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
     public float movingSpeed;
 
     public float jumpHeight;
+
+    public bool isReading = false;
     
     void Start()
     {
@@ -37,34 +39,37 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        GetMouseInput();
-        CameraMovement();
-        Movement();
-
-        //Gravity
-        velocity.y += gravity * Time.deltaTime;
-
-        characterController.Move(velocity * Time.deltaTime);
-
-        //Running();
-        if (characterController.isGrounded && velocity.y < 0)
+        if (!isReading)
         {
-            velocity.y = -2f;
-        }
+            GetMouseInput();
+            CameraMovement();
+            Movement();
 
-        movingSpeed = 5f;
+            //Gravity
+            velocity.y += gravity * Time.deltaTime;
 
-        if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
-        {
-            movingSpeed = 10f;
-        }
+            characterController.Move(velocity * Time.deltaTime);
 
-        //Jump
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            if (characterController.isGrounded)
+            //Running();
+            if (characterController.isGrounded && velocity.y < 0)
             {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                velocity.y = -2f;
+            }
+
+            movingSpeed = 5f;
+
+            if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
+            {
+                movingSpeed = 10f;
+            }
+
+            //Jump
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                if (characterController.isGrounded)
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
             }
         }
     }

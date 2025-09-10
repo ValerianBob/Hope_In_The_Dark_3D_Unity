@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Ammo
   - Gun
+  - Laptop
   layers:
   - Default
   - TransparentFX
