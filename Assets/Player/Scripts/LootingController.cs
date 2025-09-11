@@ -58,7 +58,7 @@ public class LootingController : MonoBehaviour
             ShowOrHideText();
         }
 
-        Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.yellow);
+        Debug.DrawRay(ray.origin, ray.direction * lootingRange, Color.black);
     }
 
     private void InteractLootingText()

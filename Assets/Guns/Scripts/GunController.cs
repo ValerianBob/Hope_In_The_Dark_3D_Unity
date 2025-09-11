@@ -22,48 +22,108 @@ public class GunController : MonoBehaviour
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
 
+    [Header("Sound index")]
+    public int soundIndex;
+
+    [Header("Fire Mode")]
+    public bool isAutoFire;
+    private bool fireMode;
+
     [Header("FireRate Settings")]
-    public float fireRate = 0.1f;
+    public float fireRate;
 
     [Header("Recoil Settings")]
-    public float verticalRecoil = 1f;
-    public float horizontalRecoil = 1f;
+    public float verticalRecoil;
+    public float horizontalRecoil;
 
     [Header("Bullets Settings")]
-    public int maxBulletsInMagazine = 10;
-    public int currentBulletsInMagasine = 0;
+    public int maxBulletsInMagazine;
+    public int currentBulletsInMagasine;
+    public int bulletCaliberIndex;
 
     [Header("Reload Settings")]
-    public int reloadTime = 2;
+    public int reloadTime;
+
+    [Header("Gun Flame Settings")]
+    public Light gunLight;
 
     void Start()
     {
         bulletsInMagazineText.text = maxBulletsInMagazine.ToString();
-        bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
 
-        currentBulletsInMagasine = 10;
+        if (bulletCaliberIndex == 0)
+        {
+            bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
+        }
+        else if (bulletCaliberIndex == 1)
+        {
+            bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
+        }
+        else if (bulletCaliberIndex == 2)
+        {
+            bulletsInInventoryText.text = inventory.AmmoShotGun.ToString();
+        }
+
+        currentBulletsInMagasine = maxBulletsInMagazine;
     }
 
     void Update()
     {
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-        bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
 
-        if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0)
+        if (bulletCaliberIndex == 0)
         {
-            Shot();
+            bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
+        }
+        else if (bulletCaliberIndex == 1)
+        {
+            bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
+        }
+        else if (bulletCaliberIndex == 2)
+        {
+            bulletsInInventoryText.text = inventory.AmmoShotGun.ToString();
+        }
 
+        if (!isAutoFire)
+        {
+            fireMode = Mouse.current.leftButton.wasPressedThisFrame;
+        }
+        else
+        {
+            fireMode = Mouse.current.leftButton.isPressed;
+        }
+
+        if (fireMode && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0)
+        {
+            if (bulletCaliberIndex == 2)
+            {
+                GrapeShot();
+            }
+            else
+            {
+                Shot();
+                
+            }
+
+            Invoke("TurnOfFireFlame", 0.1f);
             nextFireTime = Time.time + fireRate;
         }
-        else if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine == 0)
+        else if (fireMode && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine == 0)
         {
             SoundsController.Instance.PlayGunShot(0, transform.position);
+
+            nextFireTime = Time.time + fireRate;
         }
 
         if (Keyboard.current.rKey.wasPressedThisFrame && currentBulletsInMagasine != maxBulletsInMagazine && !isReloading)
         {
             StartCoroutine(Reload());
         }
+    }
+
+    private void TurnOfFireFlame()
+    {
+        gunLight.gameObject.SetActive(false);
     }
 
     private void Shot()
@@ -75,29 +135,69 @@ public class GunController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000f))
             {
                 Debug.Log("Hit: " + hit.collider.name + " at " + hit.point);
-                Debug.DrawLine(ray.origin, hit.point, Color.green);
+                Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
 
                 if (hit.collider.gameObject.GetComponent<TargetController>() != null)
                 {
                     hit.collider.gameObject.GetComponent<TargetController>().Death();
                 }
-
-                currentBulletsInMagasine -= 1;
-                bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-
-                SoundsController.Instance.PlayGunShot(2, transform.position);
             }
             else
             {
-                currentBulletsInMagasine -= 1;
-                bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-
                 Debug.Log("Hit nothing");
-                Debug.DrawLine(ray.origin, hit.point, Color.red);
-
-                SoundsController.Instance.PlayGunShot(2, transform.position);
+                Debug.DrawLine(ray.origin, hit.point, Color.red, 2f);
             }
         }
+
+        SoundsController.Instance.PlayGunShot(soundIndex, transform.position);
+        currentBulletsInMagasine -= 1;
+        bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
+
+        gunLight.gameObject.SetActive(true);
+
+        characterMovement.ApplyRecoil(verticalRecoil, horizontalRecoil);
+    }
+
+    private void GrapeShot()
+    {
+        int pellets = 8;
+        float spread = 5f;
+
+        for (int i = 0; i < pellets; i++)
+        {
+            Vector3 direction = Camera.transform.forward;
+            direction = Quaternion.Euler(
+                Random.Range(-spread, spread),
+                Random.Range(-spread, spread),
+                0
+            ) * direction;
+
+            Vector3 startPos = Camera.transform.position + Camera.transform.forward * 0.1f;
+
+            if (Physics.Raycast(startPos, direction, out RaycastHit hit, 1000f))
+            {
+                Debug.DrawRay(startPos, direction * hit.distance, Color.green, 2f);
+
+                if (hit.collider.gameObject.CompareTag("Target"))
+                {
+                    if (hit.collider.gameObject.GetComponent<TargetController>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<TargetController>().Death();
+                    }
+                }
+            }
+            else
+            {
+                Debug.DrawRay(startPos, direction * 1000f, Color.red, 2f);
+            }
+        }
+
+        gunLight.gameObject.SetActive(true);
+
+        SoundsController.Instance.PlayGunShot(soundIndex, transform.position);
+        currentBulletsInMagasine -= 1;
+        bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
+
         characterMovement.ApplyRecoil(verticalRecoil, horizontalRecoil);
     }
 
@@ -109,19 +209,74 @@ public class GunController : MonoBehaviour
 
         int bulletsNeeded = maxBulletsInMagazine - currentBulletsInMagasine;
 
-        if (inventory.Ammo9mm >= bulletsNeeded)
+        if (bulletCaliberIndex == 0)
         {
-            currentBulletsInMagasine += bulletsNeeded;
-            inventory.Ammo9mm -= bulletsNeeded;
+            if (inventory.Ammo9mm >= bulletsNeeded)
+            {
+                currentBulletsInMagasine += bulletsNeeded;
+                inventory.Ammo9mm -= bulletsNeeded;
+            }
+            else
+            {
+                currentBulletsInMagasine += inventory.Ammo9mm;
+                inventory.Ammo9mm = 0;
+            }
         }
-        else
+        else if (bulletCaliberIndex == 1)
         {
-            currentBulletsInMagasine += inventory.Ammo9mm;
-            inventory.Ammo9mm = 0;
+            if (inventory.Ammo7_62 >= bulletsNeeded)
+            {
+                currentBulletsInMagasine += bulletsNeeded;
+                inventory.Ammo7_62 -= bulletsNeeded;
+            }
+            else
+            {
+                currentBulletsInMagasine += inventory.Ammo7_62;
+                inventory.Ammo7_62 = 0;
+            }
+        }
+        else if (bulletCaliberIndex == 2)
+        {
+            if (inventory.AmmoShotGun >= bulletsNeeded)
+            {
+                currentBulletsInMagasine += bulletsNeeded;
+                inventory.AmmoShotGun -= bulletsNeeded;
+            }
+            else
+            {
+                currentBulletsInMagasine += inventory.AmmoShotGun;
+                inventory.AmmoShotGun = 0;
+            }
         }
 
+        //if (inventory.Ammo9mm >= bulletsNeeded)
+        //{
+        //    currentBulletsInMagasine += bulletsNeeded;
+        //    inventory.Ammo9mm -= bulletsNeeded;
+        //}
+        //else
+        //{
+        //    currentBulletsInMagasine += inventory.Ammo9mm;
+        //    inventory.Ammo9mm = 0;
+        //}
+
+        //bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
+        //bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
+
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-        bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
+
+        if (bulletCaliberIndex == 0)
+        {
+            bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
+        }
+        else if (bulletCaliberIndex == 1)
+        {
+            bulletsInInventoryText.text = inventory.Ammo7_62.ToString();
+        }
+        else if (bulletCaliberIndex == 2)
+        {
+            bulletsInInventoryText.text = inventory.AmmoShotGun.ToString();
+        }
 
         isReloading = false;
     }
