@@ -7,13 +7,16 @@ using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
+    [HideInInspector]
     public GameObject MainGun;
+    [HideInInspector] 
     public GameObject Pistol;
+    
     public GameObject Knife;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject MainGunObject;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject PistolObject;
 
     public int Ammo7_62 = 90;
@@ -21,7 +24,10 @@ public class InventoryController : MonoBehaviour
     public int AmmoShotGun = 25;
 
     public Image[] gunSlots;
+
+    [HideInInspector]
     public RawImage MainGunIcon;
+    [HideInInspector]
     public RawImage PistolIcon;
 
     private Color32 slotColor = new Color32(0, 0, 0, 165);
