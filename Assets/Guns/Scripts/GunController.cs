@@ -137,9 +137,9 @@ public class GunController : MonoBehaviour
                 Debug.Log("Hit: " + hit.collider.name + " at " + hit.point);
                 Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
 
-                if (hit.collider.gameObject.GetComponent<TargetController>() != null)
+                if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<TargetController>().Death();
+                    hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage();
                 }
             }
             else
@@ -180,9 +180,9 @@ public class GunController : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("Target"))
                 {
-                    if (hit.collider.gameObject.GetComponent<TargetController>() != null)
+                    if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                     {
-                        hit.collider.gameObject.GetComponent<TargetController>().Death();
+                        hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage();
                     }
                 }
             }
