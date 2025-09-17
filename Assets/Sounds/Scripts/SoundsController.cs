@@ -9,13 +9,14 @@ public class SoundsController : MonoBehaviour
     public AudioClip[] GunShots;
     public AudioClip[] GunTake;
     public AudioClip[] Looting;
+    public AudioClip[] Environment;
     public AudioClip[] Musics;
 
     private AudioSource audioSource;
 
     public GameObject playerPosition;
 
-    public float soundsDistance = 200f;
+    public float soundsDistance;
 
     void Awake()
     {
@@ -48,6 +49,11 @@ public class SoundsController : MonoBehaviour
     public void PlayGunTake(int index, Vector3 soundPosition)
     {
         AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, 1f);
+    }
+
+    public void PlayEnvironment(int index, Vector3 soundPosition)
+    {
+        AudioSource.PlayClipAtPoint(Environment[index], soundPosition, 1f);
     }
 
     public void PlayLooting(int index, Vector3 soundPosition)

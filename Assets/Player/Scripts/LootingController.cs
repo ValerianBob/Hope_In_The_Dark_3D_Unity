@@ -84,6 +84,13 @@ public class LootingController : MonoBehaviour
             ReadNote();
             ShowOrHideText();
         }
+        else if (hit.collider.CompareTag("ElectroBox"))
+        {
+            isVisible = true;
+
+            CarryCargo();
+            ShowOrHideText();
+        }
         else
         {
             isVisible = false;
@@ -165,6 +172,17 @@ public class LootingController : MonoBehaviour
             Cursor.visible = true;
 
             SoundsController.Instance.PlayLooting(1, transform.position);
+        }
+    }
+
+    private void CarryCargo()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<CarryAndDropCargo>().info.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<CarryAndDropCargo>().PressInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            hit.collider.gameObject.GetComponent<CarryAndDropCargo>().CarryCargo();
         }
     }
 

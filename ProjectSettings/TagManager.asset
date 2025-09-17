@@ -10,6 +10,7 @@ TagManager:
   - Gun
   - Laptop
   - Zombie
+  - ElectroBox
   layers:
   - Default
   - TransparentFX

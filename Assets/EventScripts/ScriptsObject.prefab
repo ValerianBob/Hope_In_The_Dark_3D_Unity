@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5901088770261652859}
-  - component: {fileID: 7600458584862385197}
   - component: {fileID: 1648225022052508033}
   - component: {fileID: 9087706848198852056}
   m_Layer: 0
@@ -34,21 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7600458584862385197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5255797296506835154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46121d562d86978479d2049177df09fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 7371605183918714853, guid: c816fa794db963e4b825aac23640e278, type: 3}
-  currentTargetCount: 0
-  targetCount: 20
 --- !u!114 &1648225022052508033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,10 +55,15 @@ MonoBehaviour:
   Looting:
   - {fileID: 8300000, guid: 936b5f3088968ac4e9e119d11a6ca0bc, type: 3}
   - {fileID: 8300000, guid: ebf51095a891ede4e8933011e781b7d9, type: 3}
+  Environment:
+  - {fileID: 8300000, guid: d67df47ae7834b044a86d1abce3b1d91, type: 3}
+  - {fileID: 8300000, guid: 533b804b205868b4e8804f73433e52b5, type: 3}
+  - {fileID: 8300000, guid: 3db3c24f5dd566347a659d090d49b9c0, type: 3}
+  - {fileID: 8300000, guid: c1fca9f48db66b44eb86108006a4bc96, type: 3}
   Musics:
   - {fileID: 8300000, guid: 1d021c9d895b30a4fa1555dcf7ddabfe, type: 3}
   playerPosition: {fileID: 0}
-  soundsDistance: 200
+  soundsDistance: 500
 --- !u!82 &9087706848198852056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -88,7 +77,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

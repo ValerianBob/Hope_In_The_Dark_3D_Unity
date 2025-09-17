@@ -6,6 +6,8 @@ public class OilTankFall : MonoBehaviour
     public GameObject OilTankToFall;
 
     private float angle = 0;
+
+    private bool isFalled = false;
     void Start()
     {
         
@@ -14,6 +16,13 @@ public class OilTankFall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine("FallOilTank");
+        
+        if (!isFalled)
+        {
+            SoundsController.Instance.PlayEnvironment(0, OilTankToFall.transform.position);
+
+            isFalled = true;
+        }
     }
 
     private IEnumerator FallOilTank()
