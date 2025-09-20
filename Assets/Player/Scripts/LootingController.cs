@@ -91,6 +91,13 @@ public class LootingController : MonoBehaviour
             CarryCargo();
             ShowOrHideText();
         }
+        else if (hit.collider.CompareTag("Door"))
+        {
+            isVisible = true;
+
+            EnterDoor();
+            ShowOrHideText();
+        }
         else
         {
             isVisible = false;
@@ -183,6 +190,21 @@ public class LootingController : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             hit.collider.gameObject.GetComponent<CarryAndDropCargo>().CarryCargo();
+        }
+    }
+
+    private void EnterDoor()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<EnterDoor>().DoorInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<EnterDoor>().PressInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            gameObject.GetComponent<CharacterController>().enabled = false;
+            transform.position = hit.collider.gameObject.GetComponent<EnterDoor>().PlaceToMove;
+            gameObject.GetComponent<CharacterController>().enabled = true;
+
+            SoundsController.Instance.PlayEnvironment(4, transform.position);
         }
     }
 
