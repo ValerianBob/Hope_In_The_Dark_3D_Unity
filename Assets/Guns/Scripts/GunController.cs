@@ -22,6 +22,9 @@ public class GunController : MonoBehaviour
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
 
+    [Header("Gun Damage")]
+    public int GunDamage;
+
     [Header("Sound index")]
     public int soundIndex;
 
@@ -139,7 +142,7 @@ public class GunController : MonoBehaviour
 
                 if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage();
+                    hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
                 }
             }
             else
@@ -182,7 +185,7 @@ public class GunController : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                     {
-                        hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage();
+                        hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
                     }
                 }
             }
