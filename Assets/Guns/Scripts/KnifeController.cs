@@ -16,10 +16,14 @@ public class KnifeController : MonoBehaviour
 
     public float fireRate = 0.5f;
 
+    public int Damage;
+
     public LayerMask hitMask;
 
     public TextMeshProUGUI BulletsInMagazine;
     public TextMeshProUGUI BulletsInInventory;
+
+    public ParticleSystem Blood;
 
     void Start()
     {
@@ -37,9 +41,11 @@ public class KnifeController : MonoBehaviour
         {
             if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime)
             {
-                if (hit.collider.gameObject.GetComponent<TargetController>() != null)
+                if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<TargetController>().Death();
+                    hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(Damage);
+
+                    Instantiate(Blood, hit.point, transform.rotation);
 
                     SoundsController.Instance.PlayGunShot(1, transform.position);
                 }
@@ -51,7 +57,6 @@ public class KnifeController : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
             }
         }
-
         //Debug.DrawRay(ray.origin, ray.direction * hitRange, Color.purple);
     }
 }

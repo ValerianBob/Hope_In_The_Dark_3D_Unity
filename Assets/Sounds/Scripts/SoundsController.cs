@@ -10,6 +10,7 @@ public class SoundsController : MonoBehaviour
     public AudioClip[] GunTake;
     public AudioClip[] Looting;
     public AudioClip[] Environment;
+    public AudioClip[] Zombie;
     public AudioClip[] Musics;
 
     private AudioSource audioSource;
@@ -49,6 +50,11 @@ public class SoundsController : MonoBehaviour
     public void PlayGunTake(int index, Vector3 soundPosition)
     {
         AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, 1f);
+    }
+
+    public void PlayZombie(int index, Vector3 soundPosition)
+    {
+        AudioSource.PlayClipAtPoint(Zombie[index], soundPosition, 1f);
     }
 
     public void PlayEnvironment(int index, Vector3 soundPosition)

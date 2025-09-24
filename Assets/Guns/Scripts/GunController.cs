@@ -50,6 +50,9 @@ public class GunController : MonoBehaviour
     [Header("Gun Flame Settings")]
     public Light gunLight;
 
+    [Header("Blood Settings")]
+    public ParticleSystem Blood;
+
     void Start()
     {
         bulletsInMagazineText.text = maxBulletsInMagazine.ToString();
@@ -143,6 +146,7 @@ public class GunController : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {
                     hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
+                    Instantiate(Blood, hit.point, transform.rotation);
                 }
             }
             else
@@ -181,7 +185,7 @@ public class GunController : MonoBehaviour
             {
                 Debug.DrawRay(startPos, direction * hit.distance, Color.green, 2f);
 
-                if (hit.collider.gameObject.CompareTag("Target"))
+                if (hit.collider.gameObject.CompareTag("Zombie"))
                 {
                     if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                     {

@@ -50,17 +50,17 @@ public class CharacterMovement : MonoBehaviour
 
             characterController.Move(velocity * Time.deltaTime);
 
-            //Running();
             if (characterController.isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
 
+            //Running();
             movingSpeed = 5f;
 
             if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
             {
-                movingSpeed = 10f;
+                movingSpeed = 7.5f;
             }
 
             //Jump
