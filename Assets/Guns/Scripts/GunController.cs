@@ -146,6 +146,7 @@ public class GunController : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {
                     hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
+                    hit.collider.gameObject.GetComponent<ZombieControler>().isSeePlayer = true;
                     Instantiate(Blood, hit.point, transform.rotation);
                 }
             }

@@ -14,6 +14,10 @@ public class ZombieControler : MonoBehaviour
     public int Health;
     public int AttackPower;
 
+    public float RangeToAttack;
+
+    public bool isSeePlayer = false;
+
     private int index;
     private int soundIndex;
 
@@ -25,6 +29,8 @@ public class ZombieControler : MonoBehaviour
     private float soundDelay = 0.4f;
     private float attackDelay = 0.5f;
 
+    private float distance;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,38 +41,11 @@ public class ZombieControler : MonoBehaviour
 
     void Update()
     {
-        if (!isDead)
-        {
-            agent.destination = Player.position;
-            animator.SetTrigger("Run");
-        }
+        distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        if (Time.time >= nextTimeSound && !isDead)
-        {
-            SoundsController.Instance.PlayZombie(1, transform.position);
-
-            nextTimeSound = Time.time + soundDelay;
-        }
-
-        if (Health <= 0 && !isDead)
-        {
-            isDead = true;
-
-            index = Random.Range(0, 2);
-
-            if (index == 1)
-            {
-                animator.SetTrigger("Death1");
-            }
-            else
-            {
-                animator.SetTrigger("Death2");
-            }
-
-            Destroy(GetComponent<Rigidbody>());
-            cc.direction = 2;
-            cc.center = new Vector3(0, 0.2f, 0);
-        }
+        SetDeath();
+        PursuitPlayer();
+        RunningSound();
     }
 
     public void TakeDamage(int damage)
@@ -95,5 +74,60 @@ public class ZombieControler : MonoBehaviour
             }
             
         }
+    }
+
+    private void PursuitPlayer()
+    {
+        if (distance <= RangeToAttack && !isDead)
+        {
+            isSeePlayer = true;
+        }
+
+        if (isSeePlayer && !isDead)
+        {
+            agent.destination = Player.position;
+            animator.SetTrigger("Run");
+        }
+    }
+
+    private void SetDeath()
+    {
+        if (Health <= 0 && !isDead)
+        {
+            isDead = true;
+
+            index = Random.Range(0, 2);
+
+            if (index == 1)
+            {
+                animator.SetTrigger("Death1");
+            }
+            else
+            {
+                animator.SetTrigger("Death2");
+            }
+
+            Destroy(GetComponent<Rigidbody>());
+            cc.direction = 2;
+            cc.center = new Vector3(0, 0.2f, 0);
+
+            SoundsController.Instance.PlayZombie(3, transform.position);
+        }
+    }
+
+    private void RunningSound()
+    {
+        if (Time.time >= nextTimeSound && !isDead && isSeePlayer)
+        {
+            SoundsController.Instance.PlayZombie(1, transform.position);
+
+            nextTimeSound = Time.time + soundDelay;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, RangeToAttack);
     }
 }

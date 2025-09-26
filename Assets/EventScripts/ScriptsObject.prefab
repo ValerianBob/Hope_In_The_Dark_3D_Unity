@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b83a6a049fb40be4fb62798c90f035b8, type: 3}
   - {fileID: 8300000, guid: 999f31753e90dc649bb81deea610caa8, type: 3}
   - {fileID: 8300000, guid: 5587bbe3df9fb6d48af0eb436c441d47, type: 3}
+  - {fileID: 8300000, guid: 9a5ab9e37ee480842a9ea7e1ad782617, type: 3}
   Musics:
   - {fileID: 8300000, guid: 1d021c9d895b30a4fa1555dcf7ddabfe, type: 3}
   playerPosition: {fileID: 0}
