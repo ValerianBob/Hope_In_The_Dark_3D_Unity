@@ -53,7 +53,7 @@ public class ZombieControler : MonoBehaviour
         Health -= damage;
 
         soundIndex = Random.Range(0, 3);
-        Debug.Log("sound : " + soundIndex);
+
         if (soundIndex == 0 && !isDead)
         {
             SoundsController.Instance.PlayZombie(0, transform.position);
@@ -94,6 +94,7 @@ public class ZombieControler : MonoBehaviour
     {
         if (Health <= 0 && !isDead)
         {
+            isSeePlayer = false;
             isDead = true;
 
             index = Random.Range(0, 2);
@@ -108,6 +109,7 @@ public class ZombieControler : MonoBehaviour
             }
 
             Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<NavMeshAgent>());
             cc.direction = 2;
             cc.center = new Vector3(0, 0.2f, 0);
 

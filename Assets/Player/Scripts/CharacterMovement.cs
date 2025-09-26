@@ -28,6 +28,10 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight;
 
     public bool isReading = false;
+
+    private float footSoundSpeed = 1.3f;
+
+    private bool isGrounded = false;
     
     void Start()
     {
@@ -50,17 +54,21 @@ public class CharacterMovement : MonoBehaviour
 
             characterController.Move(velocity * Time.deltaTime);
 
-            if (characterController.isGrounded && velocity.y < 0)
+            if (characterController.isGrounded && velocity.y < 0 && !isGrounded)
             {
                 velocity.y = -2f;
+                SoundsController.Instance.PlayPlayer(2, transform.position);
+                isGrounded = true;
             }
 
             //Running();
             movingSpeed = 5f;
+            footSoundSpeed = 1.3f;
 
             if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
             {
                 movingSpeed = 7.5f;
+                footSoundSpeed = 1.6f;
             }
 
             //Jump
@@ -69,9 +77,15 @@ public class CharacterMovement : MonoBehaviour
                 if (characterController.isGrounded)
                 {
                     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+                    isGrounded = false;
+
+                    SoundsController.Instance.PlayPlayer(1, transform.position);
                 }
             }
         }
+
+        HandleFootsteps(footSoundSpeed);
     }
 
     private void GetMouseInput()
@@ -126,6 +140,20 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             rotation.x -= recoilHorizontal;
+        }
+    }
+
+    private void HandleFootsteps(float FootSoundSpeed)
+    {
+        bool isMoving = (horizontal != 0 || vertical != 0);
+
+        if (characterController.isGrounded && isMoving)
+        {
+            SoundsController.Instance.PlayFootstep(0, true, FootSoundSpeed);
+        }
+        else
+        {
+            SoundsController.Instance.StopFootstep();
         }
     }
 }

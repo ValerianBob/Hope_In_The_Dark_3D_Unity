@@ -5,6 +5,8 @@ public class OilTankFall : MonoBehaviour
 {
     public GameObject OilTankToFall;
 
+    public GameObject[] zombies;
+
     private float angle = 0;
 
     private bool isFalled = false;
@@ -16,7 +18,12 @@ public class OilTankFall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine("FallOilTank");
-        
+
+        for (int i = 0; i < zombies.Length; i++)
+        {
+            zombies[i].gameObject.SetActive(true);
+        }
+
         if (!isFalled)
         {
             SoundsController.Instance.PlayEnvironment(0, OilTankToFall.transform.position);

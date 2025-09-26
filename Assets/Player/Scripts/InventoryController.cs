@@ -19,9 +19,9 @@ public class InventoryController : MonoBehaviour
     [HideInInspector]
     public GameObject PistolObject;
 
-    public int Ammo7_62 = 90;
-    public int Ammo9mm = 30;
-    public int AmmoShotGun = 25;
+    public int Ammo7_62;
+    public int Ammo9mm;
+    public int AmmoShotGun;
 
     public Image[] gunSlots;
 

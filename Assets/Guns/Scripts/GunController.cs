@@ -70,7 +70,7 @@ public class GunController : MonoBehaviour
             bulletsInInventoryText.text = inventory.AmmoShotGun.ToString();
         }
 
-        currentBulletsInMagasine = maxBulletsInMagazine;
+        currentBulletsInMagasine = 0;
     }
 
     void Update()

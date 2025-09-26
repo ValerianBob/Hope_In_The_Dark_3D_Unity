@@ -341,9 +341,9 @@ MonoBehaviour:
   Knife: {fileID: 6270992824654982551}
   MainGunObject: {fileID: 0}
   PistolObject: {fileID: 0}
-  Ammo7_62: 90
-  Ammo9mm: 30
-  AmmoShotGun: 25
+  Ammo7_62: 0
+  Ammo9mm: 0
+  AmmoShotGun: 0
   gunSlots:
   - {fileID: 0}
   - {fileID: 0}
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   inventory: {fileID: 8569902898907695815}
   bulletsInMagazineText: {fileID: 0}
   bulletsInInventoryText: {fileID: 0}
-  GunDamage: 0
+  GunDamage: 20
   soundIndex: 2
   isAutoFire: 0
   fireRate: 0.1
