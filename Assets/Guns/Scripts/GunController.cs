@@ -168,7 +168,7 @@ public class GunController : MonoBehaviour
 
     private void GrapeShot()
     {
-        int pellets = 8;
+        int pellets = 10;
         float spread = 5f;
 
         for (int i = 0; i < pellets; i++)
@@ -191,6 +191,8 @@ public class GunController : MonoBehaviour
                     if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                     {
                         hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
+                        hit.collider.gameObject.GetComponent<ZombieControler>().isSeePlayer = true;
+                        Instantiate(Blood, hit.point, transform.rotation);
                     }
                 }
             }

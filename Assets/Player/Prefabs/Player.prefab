@@ -1073,7 +1073,7 @@ MonoBehaviour:
   inventory: {fileID: 8569902898907695815}
   bulletsInMagazineText: {fileID: 0}
   bulletsInInventoryText: {fileID: 0}
-  GunDamage: 0
+  GunDamage: 10
   soundIndex: 2
   isAutoFire: 0
   fireRate: 0.4
