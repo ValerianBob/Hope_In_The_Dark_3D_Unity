@@ -28,7 +28,6 @@ public class SoundsController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -45,7 +44,6 @@ public class SoundsController : MonoBehaviour
         audioSource.maxDistance = soundsDistance;
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
 
-        //Player audio :
         if (playerPosition != null)
         {
             playerAudioSource = playerPosition.GetComponent<AudioSource>();

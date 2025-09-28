@@ -98,6 +98,20 @@ public class LootingController : MonoBehaviour
             EnterDoor();
             ShowOrHideText();
         }
+        else if (hit.collider.CompareTag("Virus"))
+        {
+            isVisible = true;
+
+            TakeVirus();
+            ShowOrHideText();
+        }
+        else if (hit.collider.CompareTag("SosFire"))
+        {
+            isVisible = true;
+
+            OpenSosFire();
+            ShowOrHideText();
+        }
         else
         {
             isVisible = false;
@@ -205,6 +219,33 @@ public class LootingController : MonoBehaviour
             gameObject.GetComponent<CharacterController>().enabled = true;
 
             SoundsController.Instance.PlayEnvironment(4, transform.position);
+        }
+    }
+
+    private void TakeVirus()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<VirusTake>().VirusInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<VirusTake>().PressInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            Destroy(hit.collider.gameObject);
+
+            SoundsController.Instance.PlayEnvironment(5, transform.position);
+        }
+    }
+
+
+    private void OpenSosFire()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<SosFlireEvent>().FlareInfo.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<SosFlireEvent>().PressInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            hit.collider.gameObject.GetComponent<SosFlireEvent>().StartEvacuation();
+
+            SoundsController.Instance.PlayEnvironment(6, transform.position);
         }
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - ElectroBox
   - Door
   - Virus
+  - SosFire
   layers:
   - Default
   - TransparentFX
