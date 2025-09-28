@@ -54,12 +54,30 @@ public class CharacterMovement : MonoBehaviour
 
             characterController.Move(velocity * Time.deltaTime);
 
-            if (characterController.isGrounded && velocity.y < 0 && !isGrounded)
+            if (characterController.isGrounded)
             {
-                velocity.y = -2f;
-                SoundsController.Instance.PlayPlayer(2, transform.position);
+                if (!isGrounded) // just landed
+                {
+                    SoundsController.Instance.PlayPlayer(2, transform.position);
+                }
+
                 isGrounded = true;
+
+                // Small downward force to keep player grounded
+                if (velocity.y < 0)
+                    velocity.y = -2f;
             }
+            else
+            {
+                isGrounded = false;
+            }
+
+            //if (characterController.isGrounded && velocity.y < 0 && !isGrounded)
+            //{
+            //    velocity.y = -2f;
+            //    SoundsController.Instance.PlayPlayer(2, transform.position);
+            //    isGrounded = true;
+            //}
 
             //Running();
             movingSpeed = 5f;

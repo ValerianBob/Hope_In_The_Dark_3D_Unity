@@ -6,4 +6,6 @@ public class EnterDoor : MonoBehaviour
     public string PressInfo;
 
     public Vector3 PlaceToMove;
+
+
 }

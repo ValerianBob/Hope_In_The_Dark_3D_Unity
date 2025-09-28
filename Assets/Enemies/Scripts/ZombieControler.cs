@@ -110,6 +110,7 @@ public class ZombieControler : MonoBehaviour
 
             Destroy(GetComponent<Rigidbody>());
             Destroy(GetComponent<NavMeshAgent>());
+            GetComponent<CapsuleCollider>().isTrigger = true;
             cc.direction = 2;
             cc.center = new Vector3(0, 0.2f, 0);
 
@@ -127,7 +128,7 @@ public class ZombieControler : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, RangeToAttack);

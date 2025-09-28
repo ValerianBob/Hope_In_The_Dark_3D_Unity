@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.218693
+      value: 154.854
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0641155
+      value: 1.5341191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.006
+      value: 64.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048af4fed92e594d86438f99631381b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -82,6 +82,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7247752815095756975}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f048af4fed92e594d86438f99631381b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5862507716882339884}
   m_SourcePrefab: {fileID: 100100000, guid: f048af4fed92e594d86438f99631381b, type: 3}
 --- !u!1 &8433179559577154731 stripped
 GameObject:
@@ -123,4 +126,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoInfo: ShotGun Ammo
   LootInfo: Press E to take Ammo
-  ammoAmount: 5
+  ammoAmount: 10
+--- !u!54 &5862507716882339884
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433179559577154731}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
