@@ -12,14 +12,17 @@ public class SoundsController : MonoBehaviour
     public AudioClip[] Environment;
     public AudioClip[] Zombie;
     public AudioClip[] Player;
+    public AudioClip[] Menu;
     public AudioClip[] Musics;
 
     private AudioSource audioSource;
 
     private AudioSource playerAudioSource;
+    private AudioSource helicopterAudioSource;
 
     [Header("References")]
     public GameObject playerPosition;
+    public GameObject helicopterPosition;
 
     public float soundsDistance;
 
@@ -54,6 +57,18 @@ public class SoundsController : MonoBehaviour
             playerAudioSource.minDistance = 1f;
             playerAudioSource.maxDistance = soundsDistance;
             playerAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        }
+
+        if (helicopterPosition != null)
+        {
+            helicopterAudioSource = helicopterPosition.GetComponent<AudioSource>();
+            if (helicopterAudioSource == null)
+                helicopterAudioSource = helicopterPosition.AddComponent<AudioSource>();
+
+            helicopterAudioSource.spatialBlend = 1f; // 3D sound
+            helicopterAudioSource.minDistance = 1f;
+            helicopterAudioSource.maxDistance = soundsDistance;
+            helicopterAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         }
     }
 
@@ -92,6 +107,11 @@ public class SoundsController : MonoBehaviour
         AudioSource.PlayClipAtPoint(Player[index], soundPosition, 1f);
     }
 
+    public void PlayMenu(int index, Vector3 soundPosition)
+    {
+        AudioSource.PlayClipAtPoint(Menu[index], soundPosition, 1f);
+    }
+
     public void PlayFootstep(int index, bool loop = false, float pitch = 1f)
     {
         if (playerAudioSource != null && index < Player.Length)
@@ -101,6 +121,17 @@ public class SoundsController : MonoBehaviour
             playerAudioSource.pitch = pitch;
             if (!playerAudioSource.isPlaying)
                 playerAudioSource.Play();
+        }
+    }
+
+    public void PlayHelicopter(int index, bool loop = false)
+    {
+        if (helicopterAudioSource != null && index < Environment.Length)
+        {
+            helicopterAudioSource.clip = Environment[index];
+            helicopterAudioSource.loop = loop;
+            if (!helicopterAudioSource.isPlaying)
+                helicopterAudioSource.Play();
         }
     }
 

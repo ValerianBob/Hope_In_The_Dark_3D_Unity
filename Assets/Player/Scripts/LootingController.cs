@@ -112,6 +112,13 @@ public class LootingController : MonoBehaviour
             OpenSosFire();
             ShowOrHideText();
         }
+        else if (hit.collider.CompareTag("Helicopter"))
+        {
+            isVisible = true;
+
+            Escape();
+            ShowOrHideText();
+        }
         else
         {
             isVisible = false;
@@ -246,6 +253,17 @@ public class LootingController : MonoBehaviour
             hit.collider.gameObject.GetComponent<SosFlireEvent>().StartEvacuation();
 
             SoundsController.Instance.PlayEnvironment(6, transform.position);
+        }
+    }
+
+    private void Escape()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<Helicopter>().Info.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<Helicopter>().LootInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            hit.collider.gameObject.GetComponent<Helicopter>().EndGame();
         }
     }
 

@@ -25,6 +25,8 @@ public class SosFlireEvent : MonoBehaviour
 
     private bool timerRunning = false;
 
+    private bool IsOpened = false;
+
     private void Start()
     {
         ps = transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -33,16 +35,21 @@ public class SosFlireEvent : MonoBehaviour
 
     public void StartEvacuation()
     {
-        ps.gameObject.SetActive(true);
-        Light.gameObject.SetActive(true);
+        if (!IsOpened)
+        {
+            ps.gameObject.SetActive(true);
+            Light.gameObject.SetActive(true);
 
-        HelicopterToEscape.gameObject.SetActive(true);
+            HelicopterToEscape.gameObject.SetActive(true);
 
-        timerRunning = true;
+            timerRunning = true;
 
-        timerText.gameObject.SetActive(true);
+            timerText.gameObject.SetActive(true);
 
-        StartCoroutine("SpawnZombie");
+            StartCoroutine("SpawnZombie");
+
+            IsOpened = true;
+        }
     }
 
     private void Update()

@@ -1,17 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Helicopter : MonoBehaviour
 {
-    public Vector3 startPoint = new Vector3(0, 0, 0);  // Set in Inspector
-    public Vector3 endPoint = new Vector3(0, 10, 20);  // Set in Inspector
+    public string Info;
+    public string LootInfo;
+
+    public Vector3 startPoint;
+    public Vector3 endPoint;
     public float speed = 5f;
 
     private bool moving = true;
 
     void Start()
     {
-        // Place helicopter at start point
         transform.position = startPoint;
+
+        SoundsController.Instance.PlayHelicopter(7,true);
     }
 
     void Update()
@@ -25,5 +30,11 @@ public class Helicopter : MonoBehaviour
                 moving = false;
             }
         }
+    }
+
+    public void EndGame()
+    {
+        Debug.Log("Game Over");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

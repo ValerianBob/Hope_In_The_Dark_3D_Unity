@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5901088770261652859}
+  - component: {fileID: 9201890081019680098}
   - component: {fileID: 1648225022052508033}
   - component: {fileID: 9087706848198852056}
   m_Layer: 0
@@ -33,6 +34,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9201890081019680098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255797296506835154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b37af4194b506145b3491918f7b77a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartGameButton: {fileID: 0}
+  ExitGameButton: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!114 &1648225022052508033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,9 +89,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9f4cff6bab77a264dbb1e7d2aa51bf53, type: 3}
   - {fileID: 8300000, guid: bad22999ad62b2c438e1c2567eab6c7a, type: 3}
   - {fileID: 8300000, guid: cf02751330776684992ee3de1dd5bda9, type: 3}
+  Menu:
+  - {fileID: 8300000, guid: 4d88cf06c47cc7946b68599f06cadcf2, type: 3}
   Musics:
   - {fileID: 8300000, guid: 1d021c9d895b30a4fa1555dcf7ddabfe, type: 3}
   playerPosition: {fileID: 0}
+  helicopterPosition: {fileID: 0}
   soundsDistance: 500
 --- !u!82 &9087706848198852056
 AudioSource:

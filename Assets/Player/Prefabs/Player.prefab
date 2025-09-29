@@ -972,13 +972,13 @@ MonoBehaviour:
   inventory: {fileID: 8569902898907695815}
   bulletsInMagazineText: {fileID: 0}
   bulletsInInventoryText: {fileID: 0}
-  GunDamage: 0
+  GunDamage: 20
   soundIndex: 2
-  isAutoFire: 0
-  fireRate: 0.2
+  isAutoFire: 1
+  fireRate: 0.15
   verticalRecoil: 1
   horizontalRecoil: 1
-  maxBulletsInMagazine: 12
+  maxBulletsInMagazine: 60
   currentBulletsInMagasine: 0
   bulletCaliberIndex: 0
   reloadTime: 1
@@ -1911,13 +1911,13 @@ MonoBehaviour:
   inventory: {fileID: 8569902898907695815}
   bulletsInMagazineText: {fileID: 0}
   bulletsInInventoryText: {fileID: 0}
-  GunDamage: 0
+  GunDamage: 25
   soundIndex: 2
   isAutoFire: 1
   fireRate: 0.1
-  verticalRecoil: 5
-  horizontalRecoil: 5
-  maxBulletsInMagazine: 30
+  verticalRecoil: 1
+  horizontalRecoil: 1
+  maxBulletsInMagazine: 100
   currentBulletsInMagasine: 0
   bulletCaliberIndex: 1
   reloadTime: 1
