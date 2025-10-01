@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
@@ -6,11 +7,15 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public Camera MenuCamera;
+    public Camera CutSceneCamera;
 
     public Canvas MenuCanvas;
     public Canvas GameCanvas;
-    
+    public Canvas CutSceneCanvas;
+
     public GameObject Player;
+    public GameObject RedLightRoom;
+    public GameObject Car;
 
     public Button StartGameButton;
     public Button ExitGameButton;
@@ -85,19 +90,55 @@ public class MenuController : MonoBehaviour
         {
             HideMenu();
             SoundsController.Instance.PlayMenu(0, MenuCamera.transform.position);
-            Invoke("LoadLevel", 10f);
+            Invoke("ShowStartCutScene", 10f);
 
             isGameStarted = true;
         }
     }
 
-    private void LoadLevel()
+    private void ShowStartCutScene()
     {
-        Player.SetActive(true);
-        GameCanvas.gameObject.SetActive(true);
-
         MenuCanvas.gameObject.SetActive(false);
         MenuCamera.gameObject.SetActive(false);
+
+        CutSceneCamera.gameObject.SetActive(true);
+        CutSceneCanvas.gameObject.SetActive(true);
+        RedLightRoom.gameObject.SetActive(true);
+
+        StartCoroutine("MoveCameraForward");
+
+        Invoke("LoadLevel", 12f);
+    }
+
+    private IEnumerator MoveCameraForward()
+    {
+        float timer = 0f;
+
+        while (timer < 7f)
+        {
+            CutSceneCamera.transform.Translate(Vector3.forward * 0.1f * Time.deltaTime);
+            timer += Time.deltaTime;
+
+            SoundsController.Instance.PlayEnvironment(8, RedLightRoom.transform.GetChild(transform.childCount - 2).transform.position);
+
+            yield return null;
+        }
+
+        Car.SetActive(true);
+        CutSceneCamera.transform.position = new Vector3(-1.06559849f, 0.9f, -170.164986f);
+        CutSceneCamera.transform.rotation = Quaternion.Euler(4.81756783f, 109.54863f, 0.282536924f);
+    }
+
+    private void LoadLevel()
+    {
+        MenuCanvas.gameObject.SetActive(false);
+        MenuCamera.gameObject.SetActive(false);
+        CutSceneCamera.gameObject.SetActive(false);
+        CutSceneCanvas.gameObject.SetActive(false);
+        RedLightRoom.gameObject.SetActive(false);
+
+        Player.SetActive(true);
+        GameCanvas.gameObject.SetActive(true);
     }
 
     private void ExitGame()

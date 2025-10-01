@@ -14,11 +14,6 @@ public class LightController : MonoBehaviour
         StartCoroutine("LightLagging");
     }
 
-    private void Update()
-    {
-        Debug.Log(show);
-    }
-
     private IEnumerator LightLagging()
     {
         while (true)
