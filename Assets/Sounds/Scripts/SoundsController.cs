@@ -19,10 +19,12 @@ public class SoundsController : MonoBehaviour
 
     private AudioSource playerAudioSource;
     private AudioSource helicopterAudioSource;
+    private AudioSource carAudioSource;
 
     [Header("References")]
     public GameObject playerPosition;
     public GameObject helicopterPosition;
+    public GameObject carPosition;
 
     public float soundsDistance;
 
@@ -47,28 +49,43 @@ public class SoundsController : MonoBehaviour
         audioSource.maxDistance = soundsDistance;
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
 
+        //Player
         if (playerPosition != null)
         {
             playerAudioSource = playerPosition.GetComponent<AudioSource>();
             if (playerAudioSource == null)
                 playerAudioSource = playerPosition.AddComponent<AudioSource>();
 
-            playerAudioSource.spatialBlend = 1f; // 3D sound
+            playerAudioSource.spatialBlend = 1f;
             playerAudioSource.minDistance = 1f;
             playerAudioSource.maxDistance = soundsDistance;
             playerAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         }
 
+        //Helicopter
         if (helicopterPosition != null)
         {
             helicopterAudioSource = helicopterPosition.GetComponent<AudioSource>();
             if (helicopterAudioSource == null)
                 helicopterAudioSource = helicopterPosition.AddComponent<AudioSource>();
 
-            helicopterAudioSource.spatialBlend = 1f; // 3D sound
+            helicopterAudioSource.spatialBlend = 1f;
             helicopterAudioSource.minDistance = 1f;
             helicopterAudioSource.maxDistance = soundsDistance;
             helicopterAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        }
+
+        //Car
+        if (carPosition != null)
+        {
+            carAudioSource = carPosition.GetComponent<AudioSource>();
+            if (carAudioSource == null)
+                carAudioSource = carPosition.AddComponent<AudioSource>();
+
+            carAudioSource.spatialBlend = 1f;
+            carAudioSource.minDistance = 1f;
+            carAudioSource.maxDistance = soundsDistance;
+            carAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         }
     }
 
@@ -132,6 +149,17 @@ public class SoundsController : MonoBehaviour
             helicopterAudioSource.loop = loop;
             if (!helicopterAudioSource.isPlaying)
                 helicopterAudioSource.Play();
+        }
+    }
+
+    public void PlayCar(int index, bool loop = false)
+    {
+        if (carAudioSource != null && index < Environment.Length)
+        {
+            carAudioSource.clip = Environment[index];
+            carAudioSource.loop = loop;
+            if (!carAudioSource.isPlaying)
+                carAudioSource.Play();
         }
     }
 

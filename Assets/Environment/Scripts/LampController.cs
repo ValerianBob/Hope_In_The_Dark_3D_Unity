@@ -16,6 +16,8 @@ public class LampController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
+        StartCoroutine("PlaySound");
+
         while (true)
         {
             isOn = !isOn;
@@ -23,6 +25,16 @@ public class LampController : MonoBehaviour
             RedLight.enabled = isOn;
 
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private IEnumerator PlaySound()
+    {
+        while (true)
+        {
+            SoundsController.Instance.PlayEnvironment(8, transform.position);
+
+            yield return new WaitForSeconds(1f);
         }
     }
 }

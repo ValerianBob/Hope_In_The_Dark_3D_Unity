@@ -46,6 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b37af4194b506145b3491918f7b77a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuCamera: {fileID: 0}
+  CutSceneCamera: {fileID: 0}
+  MenuCanvas: {fileID: 0}
+  GameCanvas: {fileID: 0}
+  CutSceneCanvas: {fileID: 0}
+  Player: {fileID: 0}
+  RedLightRoom: {fileID: 0}
+  Car: {fileID: 0}
   StartGameButton: {fileID: 0}
   ExitGameButton: {fileID: 0}
   panel: {fileID: 0}
@@ -80,6 +88,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 163200f74cf9f4542a5b751878a569eb, type: 3}
   - {fileID: 8300000, guid: 77523b309e6a53a47ab1abd03ce79755, type: 3}
   - {fileID: 8300000, guid: d4d4a63bfebe97041831886586b9457a, type: 3}
+  - {fileID: 8300000, guid: 4100648940aaa724fbe6adc29899fdb9, type: 3}
+  - {fileID: 8300000, guid: aae97ad8871f59c4fb945e1e279b49f4, type: 3}
   Zombie:
   - {fileID: 8300000, guid: b83a6a049fb40be4fb62798c90f035b8, type: 3}
   - {fileID: 8300000, guid: 999f31753e90dc649bb81deea610caa8, type: 3}
@@ -95,6 +105,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d021c9d895b30a4fa1555dcf7ddabfe, type: 3}
   playerPosition: {fileID: 0}
   helicopterPosition: {fileID: 0}
+  carPosition: {fileID: 0}
   soundsDistance: 500
 --- !u!82 &9087706848198852056
 AudioSource:

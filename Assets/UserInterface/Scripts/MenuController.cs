@@ -34,6 +34,9 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         StartGameButton.onClick.AddListener(StartGame);
         ExitGameButton.onClick.AddListener(ExitGame);
 
@@ -118,9 +121,6 @@ public class MenuController : MonoBehaviour
         {
             CutSceneCamera.transform.Translate(Vector3.forward * 0.1f * Time.deltaTime);
             timer += Time.deltaTime;
-
-            SoundsController.Instance.PlayEnvironment(8, RedLightRoom.transform.GetChild(transform.childCount - 2).transform.position);
-
             yield return null;
         }
 

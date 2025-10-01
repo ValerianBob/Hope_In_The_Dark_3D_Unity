@@ -8,7 +8,9 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        Invoke("DestroyCar", 4f);
+        SoundsController.Instance.PlayCar(9, true);
+
+        Invoke("DestroyCar", 5f);
     }
 
     private void FixedUpdate()
