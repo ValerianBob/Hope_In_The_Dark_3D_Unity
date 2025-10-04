@@ -55,6 +55,7 @@ public class GunController : MonoBehaviour
     [Header("Blood Settings")]
     public ParticleSystem Blood;
 
+    private Coroutine reloadCoroutine;
     void Start()
     {
         bulletsInMagazineText.text = maxBulletsInMagazine.ToString();
@@ -126,7 +127,12 @@ public class GunController : MonoBehaviour
 
         if (Keyboard.current.rKey.wasPressedThisFrame && currentBulletsInMagasine != maxBulletsInMagazine && !isReloading)
         {
-            StartCoroutine(Reload());
+            if (reloadCoroutine != null)
+            {
+                StopCoroutine(reloadCoroutine);
+            }
+
+            reloadCoroutine = StartCoroutine(Reload());
         }
     }
 
@@ -292,6 +298,13 @@ public class GunController : MonoBehaviour
         }
 
         isReloading = false;
+    }
+
+    void OnDisable()
+    {
+        if (reloadCoroutine != null)
+            StopCoroutine(reloadCoroutine);
+        isReloading = false; // Reset state
     }
 }
 
