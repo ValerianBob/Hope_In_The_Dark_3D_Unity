@@ -6,6 +6,9 @@ public class KnifeController : MonoBehaviour
 {
     public Camera Camera;
 
+    public CharacterMovement cm;
+    public InGameMenu menu;
+
     private Ray ray;
 
     private RaycastHit hit;
@@ -39,7 +42,7 @@ public class KnifeController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, hitRange, hitMask))
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime)
+            if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime && !cm.isDead && !menu.isMenuOpened)
             {
                 if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
                 {

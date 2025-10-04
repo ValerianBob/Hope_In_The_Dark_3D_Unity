@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8243670350696121965
 Transform:
   m_ObjectHideFlags: 0
@@ -297,11 +297,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808514e9bac484e4091420ca1a148993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InGameMenuController: {fileID: 0}
+  DeathText: {fileID: 0}
+  DeathView: {fileID: 0}
+  healthBar: {fileID: 0}
   mainCamera: {fileID: 8375574175557083298}
+  maxHealth: 100
+  currentHealth: 0
   sensitivity: 0.2
   movingSpeed: 5
   jumpHeight: 1.5
   isReading: 0
+  isDead: 0
 --- !u!114 &346532352035948877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536ad2764f27ef64a98153d5d9485a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuController: {fileID: 0}
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -967,6 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536ad2764f27ef64a98153d5d9485a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuController: {fileID: 0}
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -1068,6 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536ad2764f27ef64a98153d5d9485a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuController: {fileID: 0}
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -1696,6 +1706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 8375574175557083298}
+  cm: {fileID: 4411854257831350420}
+  menu: {fileID: 0}
   fireRate: 0.5
   Damage: 30
   hitMask:
@@ -1906,6 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536ad2764f27ef64a98153d5d9485a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuController: {fileID: 0}
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -2033,6 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536ad2764f27ef64a98153d5d9485a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameMenuController: {fileID: 0}
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}

@@ -1,10 +1,22 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CharacterMovement : MonoBehaviour
 {
     private CharacterController characterController;
+    public InGameMenu InGameMenuController;
+
+    public TextMeshProUGUI DeathText;
+
+    public Image DeathView;
+    private Color color;
+
+    public Slider healthBar;
 
     public Camera mainCamera;
 
@@ -21,6 +33,10 @@ public class CharacterMovement : MonoBehaviour
     private float horizontal = 0f;
     private float vertical = 0f;
 
+    [Header("Health")]
+    public float maxHealth;
+    public float currentHealth;
+
     public float sensitivity;
 
     public float movingSpeed;
@@ -31,10 +47,17 @@ public class CharacterMovement : MonoBehaviour
 
     private float footSoundSpeed = 1.3f;
 
+    private float deathTimer = 0f;
+    private float fadeTimer = 0f;
+
     private bool isGrounded = false;
+
+    public bool isDead = false;
     
     void Start()
     {
+        currentHealth = maxHealth;
+
         characterController = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,7 +66,19 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isReading)
+        if (!isDead && currentHealth <= 0)
+        {
+            SetDeath();
+        }
+
+        if (isDead)
+        {
+            HandleDeathSequence();
+        }
+
+        UpdateHalthBarUI();
+
+        if (!isReading && !InGameMenuController.isMenuOpened && !isDead)
         {
             GetMouseInput();
             CameraMovement();
@@ -147,6 +182,16 @@ public class CharacterMovement : MonoBehaviour
         characterController.Move(moveDir * movingSpeed * Time.deltaTime);
     }
 
+    private void UpdateHalthBarUI()
+    {
+        healthBar.value = currentHealth / maxHealth;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+    }
+
     public void ApplyRecoil(float recoilVertical, float recoilHorizontal)
     {
         rotation.y -= recoilVertical;
@@ -163,6 +208,12 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleFootsteps(float FootSoundSpeed)
     {
+        if (isDead || InGameMenuController.isMenuOpened)
+        {
+            SoundsController.Instance.StopFootstep();
+            return;
+        }
+
         bool isMoving = (horizontal != 0 || vertical != 0);
 
         if (characterController.isGrounded && isMoving)
@@ -173,5 +224,48 @@ public class CharacterMovement : MonoBehaviour
         {
             SoundsController.Instance.StopFootstep();
         }
+    }
+
+    private void SetDeath()
+    {
+        isDead = true;
+        Time.timeScale = 0f;
+
+        DeathView.gameObject.SetActive(true);
+    }
+
+    private void ShowDeathText()
+    {
+        DeathText.gameObject.SetActive(true);
+    }
+
+    private void HandleDeathSequence()
+    {
+        if (fadeTimer < 4f)
+        {
+            fadeTimer += Time.unscaledDeltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, fadeTimer / 4f);
+            color.a = alpha;
+            DeathView.color = color;
+        }
+
+        deathTimer += Time.unscaledDeltaTime;
+
+        if (deathTimer >= 5f && !DeathText.gameObject.activeSelf)
+        {
+            DeathText.gameObject.SetActive(true);
+        }
+
+        if (deathTimer >= 10f)
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OpenMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

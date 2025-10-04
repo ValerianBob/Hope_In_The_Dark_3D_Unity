@@ -7,10 +7,13 @@ public class InGameMenu : MonoBehaviour
 {
     public GameObject InGameMenuPanel;
 
+    public CharacterMovement cm;
+
     public Button ContinueButton;
     public Button ExitButton;
 
-    private bool isMenuOpened = false;
+    [HideInInspector]
+    public bool isMenuOpened = false;
 
     void Start()
     {
@@ -20,7 +23,7 @@ public class InGameMenu : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && !cm.isDead)
         {
             isMenuOpened = !isMenuOpened;
 
@@ -55,6 +58,7 @@ public class InGameMenu : MonoBehaviour
 
     private void Exit()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

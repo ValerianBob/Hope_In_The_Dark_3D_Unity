@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Xml;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -117,6 +118,13 @@ public class LootingController : MonoBehaviour
             isVisible = true;
 
             Escape();
+            ShowOrHideText();
+        }
+        else if (hit.collider.CompareTag("MedKit"))
+        {
+            isVisible = true;
+
+            TakeMedKit();
             ShowOrHideText();
         }
         else
@@ -264,6 +272,18 @@ public class LootingController : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             hit.collider.gameObject.GetComponent<Helicopter>().EndGame();
+        }
+    }
+
+    private void TakeMedKit()
+    {
+        ItemInfo.text = hit.collider.gameObject.GetComponent<MedKitController>().Info.ToString();
+        ActionText.text = hit.collider.gameObject.GetComponent<MedKitController>().LootInfo.ToString();
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            hit.collider.gameObject.GetComponent<MedKitController>().HealPlayer();
+            characterMovement.currentHealth = characterMovement.maxHealth;
         }
     }
 

@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
+    public InGameMenu inGameMenuController;
+
     private Ray ray;
     private RaycastHit hit;
 
     private float nextFireTime = 0f;
 
-    private bool isReloading = false;
+    public bool isReloading = false;
 
     public Camera Camera;
 
@@ -99,7 +101,8 @@ public class GunController : MonoBehaviour
             fireMode = Mouse.current.leftButton.isPressed;
         }
 
-        if (fireMode && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0)
+        if (fireMode && Time.time >= nextFireTime && !isReloading && currentBulletsInMagasine > 0 && !inGameMenuController.isMenuOpened 
+            && !characterMovement.isDead)
         {
             if (bulletCaliberIndex == 2)
             {

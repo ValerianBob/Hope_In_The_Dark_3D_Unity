@@ -27,7 +27,9 @@ public class MenuController : MonoBehaviour
     private float fadeSpeed = 6f;
     private float timer = 0f;
 
+    [SerializeField]
     private bool fadingOut = false;
+    [SerializeField]
     private bool fadingIn = false;
 
     private bool isGameStarted = false;

@@ -70,6 +70,8 @@ public class ZombieControler : MonoBehaviour
             {
                 SoundsController.Instance.PlayZombie(2, transform.position);
 
+                collision.gameObject.GetComponent<CharacterMovement>().TakeDamage(3);
+
                 nextTimeAttack = Time.time + attackDelay;
             }
             

@@ -15,6 +15,7 @@ TagManager:
   - Virus
   - SosFire
   - Helicopter
+  - MedKit
   layers:
   - Default
   - TransparentFX
