@@ -307,4 +307,3 @@ public class GunController : MonoBehaviour
         isReloading = false; // Reset state
     }
 }
-
