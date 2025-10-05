@@ -44,6 +44,8 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight;
 
     public bool isReading = false;
+    
+    private bool isMoving = false;
 
     private float footSoundSpeed = 1.3f;
 
@@ -53,9 +55,18 @@ public class CharacterMovement : MonoBehaviour
     private bool isGrounded = false;
 
     public bool isDead = false;
-    
+
+    //Camera shaking :
+    [SerializeField] private float shakeAmplitude = 0.06f;
+    [SerializeField] private float shakeFrequency = 3f;
+
+    private Vector3 originalCamPos;
+    private float shakeTimer = 0f;
+
     void Start()
     {
+        originalCamPos = mainCamera.transform.localPosition;
+
         currentHealth = maxHealth;
 
         characterController = GetComponent<CharacterController>();
@@ -84,6 +95,8 @@ public class CharacterMovement : MonoBehaviour
             CameraMovement();
             Movement();
 
+            HandleCameraShake(isMoving);
+
             //Gravity
             velocity.y += gravity * Time.deltaTime;
 
@@ -91,14 +104,13 @@ public class CharacterMovement : MonoBehaviour
 
             if (characterController.isGrounded)
             {
-                if (!isGrounded) // just landed
+                if (!isGrounded)
                 {
                     SoundsController.Instance.PlayPlayer(2, transform.position);
                 }
 
                 isGrounded = true;
 
-                // Small downward force to keep player grounded
                 if (velocity.y < 0)
                     velocity.y = -2f;
             }
@@ -107,21 +119,16 @@ public class CharacterMovement : MonoBehaviour
                 isGrounded = false;
             }
 
-            //if (characterController.isGrounded && velocity.y < 0 && !isGrounded)
-            //{
-            //    velocity.y = -2f;
-            //    SoundsController.Instance.PlayPlayer(2, transform.position);
-            //    isGrounded = true;
-            //}
-
             //Running();
             movingSpeed = 5f;
             footSoundSpeed = 1.3f;
+            shakeFrequency = 3f;
 
             if (Keyboard.current.leftShiftKey.isPressed && characterController.isGrounded)
             {
                 movingSpeed = 7.5f;
                 footSoundSpeed = 1.6f;
+                shakeFrequency = 6f;
             }
 
             //Jump
@@ -177,6 +184,8 @@ public class CharacterMovement : MonoBehaviour
         {
             horizontal = 1f;
         }
+
+        isMoving = (horizontal != 0 || vertical != 0) && characterController.isGrounded;
 
         moveDir = transform.right * horizontal + transform.forward * vertical;
         characterController.Move(moveDir * movingSpeed * Time.deltaTime);
@@ -234,11 +243,6 @@ public class CharacterMovement : MonoBehaviour
         DeathView.gameObject.SetActive(true);
     }
 
-    private void ShowDeathText()
-    {
-        DeathText.gameObject.SetActive(true);
-    }
-
     private void HandleDeathSequence()
     {
         if (fadeTimer < 4f)
@@ -263,9 +267,21 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private void OpenMainMenu()
+    private void HandleCameraShake(bool isMoving)
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (isMoving)
+        {
+            shakeTimer += Time.deltaTime * shakeFrequency;
+
+            float xOffset = Mathf.Sin(shakeTimer) * shakeAmplitude;
+            float yOffset = Mathf.Abs(Mathf.Cos(shakeTimer * 2f)) * shakeAmplitude;
+
+            mainCamera.transform.localPosition = originalCamPos + new Vector3(xOffset, yOffset, 0);
+        }
+        else
+        {
+            mainCamera.transform.localPosition = Vector3.Lerp(mainCamera.transform.localPosition, originalCamPos, Time.deltaTime * 5f);
+            shakeTimer = 0f;
+        }
     }
 }

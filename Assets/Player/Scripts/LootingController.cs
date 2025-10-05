@@ -284,6 +284,8 @@ public class LootingController : MonoBehaviour
         {
             hit.collider.gameObject.GetComponent<MedKitController>().HealPlayer();
             characterMovement.currentHealth = characterMovement.maxHealth;
+
+            SoundsController.Instance.PlayEnvironment(10, transform.position);
         }
     }
 

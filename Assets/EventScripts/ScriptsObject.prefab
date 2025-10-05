@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InGameMenuPanel: {fileID: 0}
+  cm: {fileID: 0}
   ContinueButton: {fileID: 0}
   ExitButton: {fileID: 0}
+  isMenuOpened: 0
 --- !u!114 &9201890081019680098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +75,8 @@ MonoBehaviour:
   StartGameButton: {fileID: 0}
   ExitGameButton: {fileID: 0}
   panel: {fileID: 0}
+  fadingOut: 0
+  fadingIn: 0
 --- !u!114 &1648225022052508033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +110,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d4d4a63bfebe97041831886586b9457a, type: 3}
   - {fileID: 8300000, guid: 4100648940aaa724fbe6adc29899fdb9, type: 3}
   - {fileID: 8300000, guid: aae97ad8871f59c4fb945e1e279b49f4, type: 3}
+  - {fileID: 8300000, guid: 3c436528af4dbb745b3dff73aca7f250, type: 3}
   Zombie:
   - {fileID: 8300000, guid: b83a6a049fb40be4fb62798c90f035b8, type: 3}
   - {fileID: 8300000, guid: 999f31753e90dc649bb81deea610caa8, type: 3}

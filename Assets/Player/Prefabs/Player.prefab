@@ -76,7 +76,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8243670350696121965
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +309,8 @@ MonoBehaviour:
   jumpHeight: 1.5
   isReading: 0
   isDead: 0
+  shakeAmplitude: 0.06
+  shakeFrequency: 3
 --- !u!114 &346532352035948877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuController: {fileID: 0}
+  isReloading: 0
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -976,6 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuController: {fileID: 0}
+  isReloading: 0
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -1078,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuController: {fileID: 0}
+  isReloading: 0
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -1919,6 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuController: {fileID: 0}
+  isReloading: 0
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
@@ -2047,6 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenuController: {fileID: 0}
+  isReloading: 0
   Camera: {fileID: 8375574175557083298}
   characterMovement: {fileID: 4411854257831350420}
   inventory: {fileID: 8569902898907695815}
