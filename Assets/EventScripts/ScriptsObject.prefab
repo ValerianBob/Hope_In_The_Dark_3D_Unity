@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5901088770261652859}
+  - component: {fileID: 137060304770532242}
   - component: {fileID: 134307966593985043}
   - component: {fileID: 9201890081019680098}
   - component: {fileID: 1648225022052508033}
@@ -35,6 +36,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &137060304770532242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255797296506835154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb3c655d6f30dd4484b5017089e6a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
+  PlayerSensitivity: 0
+  SoundVolume: 0
 --- !u!114 &134307966593985043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,8 +64,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InGameMenuPanel: {fileID: 0}
+  Settings: {fileID: 0}
   cm: {fileID: 0}
   ContinueButton: {fileID: 0}
+  SettingsButton: {fileID: 0}
+  BackButton: {fileID: 0}
   ExitButton: {fileID: 0}
   isMenuOpened: 0
 --- !u!114 &9201890081019680098
