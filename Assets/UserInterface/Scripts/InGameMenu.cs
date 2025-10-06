@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class InGameMenu : MonoBehaviour
 {
+    private MenuController menuController;
+
     public GameObject InGameMenuPanel;
     public GameObject Settings;
 
@@ -28,8 +30,10 @@ public class InGameMenu : MonoBehaviour
 
     void Start()
     {
-        sensitivitySlider.value = 0.2f;
-        soundSlider.value = 1f;
+        menuController = GetComponent<MenuController>();
+
+        sensitivitySlider.value = PlayerSettings.Instance.PlayerSensitivity;
+        soundSlider.value = PlayerSettings.Instance.SoundVolume;
 
         sensitivityNumberText.text = sensitivitySlider.value.ToString();
         soundNumberText.text = soundSlider.value.ToString();
@@ -65,11 +69,7 @@ public class InGameMenu : MonoBehaviour
             }
         }
 
-        PlayerSettings.Instance.PlayerSensitivity = Mathf.Round(sensitivitySlider.value * 10f) / 10f;
-        PlayerSettings.Instance.SoundVolume = Mathf.Round(soundSlider.value * 10f) / 10f; 
-
-        sensitivityNumberText.text = (Mathf.Round(sensitivitySlider.value * 10f) / 10f).ToString();
-        soundNumberText.text = (Mathf.Round(soundSlider.value * 10f) / 10f).ToString(); 
+        SetSettings();
     }
 
     private void Continue()
@@ -98,6 +98,24 @@ public class InGameMenu : MonoBehaviour
         ContinueButton.gameObject.SetActive(true);
         SettingsButton.gameObject.SetActive(true);
         ExitButton.gameObject.SetActive(true);
+    }
+
+    private void SetSettings()
+    {
+        PlayerSettings.Instance.PlayerSensitivity = Mathf.Round(sensitivitySlider.value * 10f) / 10f;
+        PlayerSettings.Instance.SoundVolume = Mathf.Round(soundSlider.value * 10f) / 10f;
+
+        sensitivityNumberText.text = (Mathf.Round(sensitivitySlider.value * 10f) / 10f).ToString();
+        soundNumberText.text = (Mathf.Round(soundSlider.value * 10f) / 10f).ToString();
+
+        if (!menuController.isManeMenuSettingsOn)
+        {
+            menuController.sensitivitySlider.value = sensitivitySlider.value;
+            menuController.soundSlider.value = soundSlider.value;
+
+            menuController.sensitivityNumberText.text = (Mathf.Round(sensitivitySlider.value * 10f) / 10f).ToString();
+            menuController.soundNumberText.text = (Mathf.Round(soundSlider.value * 10f) / 10f).ToString();
+        }
     }
 
     private void Exit()

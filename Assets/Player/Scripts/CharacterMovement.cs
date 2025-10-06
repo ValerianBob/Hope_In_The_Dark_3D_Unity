@@ -77,6 +77,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        sensitivity = PlayerSettings.Instance.PlayerSensitivity;
+
         if (!isDead && currentHealth <= 0)
         {
             SetDeath();

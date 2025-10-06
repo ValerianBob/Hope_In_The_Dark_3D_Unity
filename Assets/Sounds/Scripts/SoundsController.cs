@@ -27,6 +27,7 @@ public class SoundsController : MonoBehaviour
     public GameObject carPosition;
 
     public float soundsDistance;
+    public float currentVolume;
 
     void Awake()
     {
@@ -89,44 +90,57 @@ public class SoundsController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        currentVolume = PlayerSettings.Instance.SoundVolume;
+
+        playerAudioSource.volume = currentVolume;
+        helicopterAudioSource.volume = currentVolume;
+
+        if (carAudioSource != null)
+        {
+            carAudioSource.volume = currentVolume;
+        }
+    }
+
     public void PlayGunShot(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(GunShots[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(GunShots[index], soundPosition, currentVolume);
     }
 
     public void PlayGunTake(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, currentVolume);
     }
 
     public void PlayZombie(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Zombie[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Zombie[index], soundPosition, currentVolume);
     }
 
     public void PlayEnvironment(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Environment[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Environment[index], soundPosition, currentVolume);
     }
 
     public void PlayLooting(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Looting[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Looting[index], soundPosition, currentVolume);
     }
 
     public void PlayMusic(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Musics[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Musics[index], soundPosition, currentVolume);
     }
 
     public void PlayPlayer(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Player[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Player[index], soundPosition, currentVolume);
     }
 
     public void PlayMenu(int index, Vector3 soundPosition)
     {
-        AudioSource.PlayClipAtPoint(Menu[index], soundPosition, 1f);
+        AudioSource.PlayClipAtPoint(Menu[index], soundPosition, currentVolume);
     }
 
     public void PlayFootstep(int index, bool loop = false, float pitch = 1f)

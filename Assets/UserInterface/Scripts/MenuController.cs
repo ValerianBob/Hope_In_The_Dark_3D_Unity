@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    private InGameMenu inGameMenu;
+
     public Camera MenuCamera;
     public Camera CutSceneCamera;
 
@@ -19,6 +22,22 @@ public class MenuController : MonoBehaviour
 
     public Button StartGameButton;
     public Button ExitGameButton;
+
+    //Settings
+    public GameObject Settings;
+    public Button settingsButton;
+    public Button BackButtonFromSettings;
+
+    public Slider sensitivitySlider;
+    public Slider soundSlider;
+
+    public TextMeshProUGUI sensitivityNumberText;
+    public TextMeshProUGUI soundNumberText;
+
+    //Developers
+    public Button DevelopersButton;
+    public GameObject DevelopersNames;
+    public Button BackButtonFromDevelopers;
 
     //Show-Hide menu
     public Image panel;
@@ -34,15 +53,31 @@ public class MenuController : MonoBehaviour
 
     private bool isGameStarted = false;
 
+    public bool isManeMenuSettingsOn = true;
+
     void Start()
     {
+        inGameMenu = GetComponent<InGameMenu>();
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
         StartGameButton.onClick.AddListener(StartGame);
         ExitGameButton.onClick.AddListener(ExitGame);
 
+        settingsButton.onClick.AddListener(ShowSettings);
+        BackButtonFromSettings.onClick.AddListener(BackFromSettings);
+
+        DevelopersButton.onClick.AddListener(ShowDevelopers);
+        BackButtonFromDevelopers.onClick.AddListener(BackFromDevelopers);
+        
         color = panel.color;
+
+        sensitivitySlider.value = PlayerSettings.Instance.PlayerSensitivity;
+        soundSlider.value = PlayerSettings.Instance.SoundVolume;
+
+        sensitivityNumberText.text = sensitivitySlider.value.ToString();
+        soundNumberText.text = soundSlider.value.ToString();
 
         ShowMenu();
     }
@@ -50,6 +85,8 @@ public class MenuController : MonoBehaviour
     void Update()
     {
         ShowOrHidePanel();
+
+        SetSettings();
     }
 
     public void ShowMenu()
@@ -93,6 +130,8 @@ public class MenuController : MonoBehaviour
     {
         if (!isGameStarted)
         {
+            isManeMenuSettingsOn = false;
+
             HideMenu();
             SoundsController.Instance.PlayMenu(0, MenuCamera.transform.position);
             Invoke("ShowStartCutScene", 10f);
@@ -141,6 +180,64 @@ public class MenuController : MonoBehaviour
 
         Player.SetActive(true);
         GameCanvas.gameObject.SetActive(true);
+    }
+    
+    private void ShowSettings()
+    {
+        Settings.SetActive(true);
+
+        StartGameButton.gameObject.SetActive(false);
+        settingsButton.gameObject.SetActive(false);
+        DevelopersButton.gameObject.SetActive(false);
+        ExitGameButton.gameObject.SetActive(false);
+    }
+
+    private void BackFromSettings()
+    {
+        Settings.SetActive(false);
+
+        StartGameButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(true);
+        DevelopersButton.gameObject.SetActive(true);
+        ExitGameButton.gameObject.SetActive(true);
+    }
+
+    private void ShowDevelopers()
+    {
+        DevelopersNames.SetActive(true);
+
+        StartGameButton.gameObject.SetActive(false);
+        settingsButton.gameObject.SetActive(false);
+        DevelopersButton.gameObject.SetActive(false);
+        ExitGameButton.gameObject.SetActive(false);
+    }
+
+    private void BackFromDevelopers()
+    {
+        DevelopersNames.SetActive(false);
+
+        StartGameButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(true);
+        DevelopersButton.gameObject.SetActive(true);
+        ExitGameButton.gameObject.SetActive(true);
+    }
+
+    private void SetSettings()
+    {
+        PlayerSettings.Instance.PlayerSensitivity = Mathf.Round(sensitivitySlider.value * 10f) / 10f;
+        PlayerSettings.Instance.SoundVolume = Mathf.Round(soundSlider.value * 10f) / 10f;
+
+        sensitivityNumberText.text = (Mathf.Round(sensitivitySlider.value * 10f) / 10f).ToString();
+        soundNumberText.text = (Mathf.Round(soundSlider.value * 10f) / 10f).ToString();
+
+        if (isManeMenuSettingsOn)
+        {
+            inGameMenu.sensitivitySlider.value = sensitivitySlider.value;
+            inGameMenu.soundSlider.value = soundSlider.value;
+
+            inGameMenu.sensitivityNumberText.text = (Mathf.Round(sensitivitySlider.value * 10f) / 10f).ToString();
+            inGameMenu.soundNumberText.text = (Mathf.Round(soundSlider.value * 10f) / 10f).ToString();
+        }
     }
 
     private void ExitGame()
