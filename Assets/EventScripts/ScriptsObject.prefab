@@ -140,8 +140,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf02751330776684992ee3de1dd5bda9, type: 3}
   Menu:
   - {fileID: 8300000, guid: 4d88cf06c47cc7946b68599f06cadcf2, type: 3}
-  Musics:
-  - {fileID: 8300000, guid: 1d021c9d895b30a4fa1555dcf7ddabfe, type: 3}
+  Musics: []
   playerPosition: {fileID: 0}
   helicopterPosition: {fileID: 0}
   carPosition: {fileID: 0}
