@@ -34,15 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -52.81
+      value: -7.000333
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.558
+      value: 0.2741294
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 290.11
+      value: -12.32227
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -153,6 +153,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5676218795634915180}
   m_SourcePrefab: {fileID: 100100000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+--- !u!1 &6656713808172841138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6122313397066071142, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+  m_PrefabInstance: {fileID: 619164033461290196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8914413109656411613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
@@ -194,9 +199,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  head: {fileID: 6656713808172841138}
   Health: 100
   AttackPower: 5
   RangeToAttack: 10
+  isSeePlayer: 0
 --- !u!195 &606481296022475231
 NavMeshAgent:
   m_ObjectHideFlags: 0

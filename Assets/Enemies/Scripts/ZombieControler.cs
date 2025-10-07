@@ -11,6 +11,8 @@ public class ZombieControler : MonoBehaviour
 
     private CapsuleCollider cc;
 
+    public GameObject head;
+
     public int Health;
     public int AttackPower;
 

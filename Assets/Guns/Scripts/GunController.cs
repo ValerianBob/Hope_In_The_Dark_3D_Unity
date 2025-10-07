@@ -20,6 +20,8 @@ public class GunController : MonoBehaviour
 
     public InventoryController inventory;
 
+    public GameObject BloodSpot;
+
     [Header("Bullets Text Settings")]
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
@@ -156,7 +158,11 @@ public class GunController : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
                     hit.collider.gameObject.GetComponent<ZombieControler>().isSeePlayer = true;
+
                     Instantiate(Blood, hit.point, transform.rotation);
+
+                    GameObject bloodSpot = Instantiate(BloodSpot, hit.point - hit.normal * 0.05f, Quaternion.LookRotation(hit.normal));
+                    bloodSpot.transform.SetParent(hit.collider.gameObject.GetComponent<ZombieControler>().head.transform); 
                 }
             }
             else
@@ -202,6 +208,9 @@ public class GunController : MonoBehaviour
                         hit.collider.gameObject.GetComponent<ZombieControler>().TakeDamage(GunDamage);
                         hit.collider.gameObject.GetComponent<ZombieControler>().isSeePlayer = true;
                         Instantiate(Blood, hit.point, transform.rotation);
+
+                        GameObject bloodSpot = Instantiate(BloodSpot, hit.point - hit.normal * 0.05f, Quaternion.LookRotation(hit.normal));
+                        bloodSpot.transform.SetParent(hit.collider.gameObject.GetComponent<ZombieControler>().head.transform);
                     }
                 }
             }
@@ -267,20 +276,6 @@ public class GunController : MonoBehaviour
                 inventory.AmmoShotGun = 0;
             }
         }
-
-        //if (inventory.Ammo9mm >= bulletsNeeded)
-        //{
-        //    currentBulletsInMagasine += bulletsNeeded;
-        //    inventory.Ammo9mm -= bulletsNeeded;
-        //}
-        //else
-        //{
-        //    currentBulletsInMagasine += inventory.Ammo9mm;
-        //    inventory.Ammo9mm = 0;
-        //}
-
-        //bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
-        //bulletsInInventoryText.text = inventory.Ammo9mm.ToString();
 
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
 

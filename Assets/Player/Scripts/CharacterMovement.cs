@@ -8,6 +8,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class CharacterMovement : MonoBehaviour
 {
+    private Animator animator;
+
     private CharacterController characterController;
     public InGameMenu InGameMenuController;
 
@@ -45,7 +47,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool isReading = false;
     
-    private bool isMoving = false;
+    public bool isMoving = false;
 
     private float footSoundSpeed = 1.3f;
 

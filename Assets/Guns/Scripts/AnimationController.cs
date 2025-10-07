@@ -6,6 +6,8 @@ public class AnimationController : MonoBehaviour
 {
     private Animator _animator;
 
+    public CharacterMovement CharacterMovementScript;
+
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -13,21 +15,24 @@ public class AnimationController : MonoBehaviour
 
     void Update()
     {
-        _animator.SetTrigger("Idle");
+        if (!CharacterMovementScript.isMoving)
+        {
+            _animator.SetTrigger("Idle");
+        }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             _animator.SetTrigger("Fire");
         }
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            _animator.SetTrigger("CheckSkin");
-        }
-
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             _animator.SetTrigger("Reload");
+        }
+
+        if (CharacterMovementScript.isMoving)
+        {
+            _animator.SetTrigger("Walk");
         }
     }
 }

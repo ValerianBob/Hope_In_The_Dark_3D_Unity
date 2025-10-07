@@ -238128,18 +238128,6 @@ PrefabInstance:
       propertyPath: bulletsInInventoryText
       value: 
       objectReference: {fileID: 1224693700}
-    - target: {fileID: 1956478816114293612, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 1824685173}
-    - target: {fileID: 1956478816114293612, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: BulletsInMagazine
-      value: 
-      objectReference: {fileID: 1224693701}
-    - target: {fileID: 1956478816114293612, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: BulletsInInventory
-      value: 
-      objectReference: {fileID: 1224693700}
     - target: {fileID: 4411854257831350420, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: DeathText
       value: 
@@ -238153,10 +238141,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1994245866}
     - target: {fileID: 4411854257831350420, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: sensitivity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4411854257831350420, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: InGameMenuController
       value: 
       objectReference: {fileID: 1824685173}
@@ -238168,18 +238152,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5289273716080516090, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 1824685173}
-    - target: {fileID: 5289273716080516090, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: BulletsInMagazine
-      value: 
-      objectReference: {fileID: 1224693701}
-    - target: {fileID: 5289273716080516090, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
-      propertyPath: BulletsInInventory
-      value: 
-      objectReference: {fileID: 1224693700}
     - target: {fileID: 5378336030365694991, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: inGameMenuController
       value: 
@@ -238190,6 +238162,18 @@ PrefabInstance:
       objectReference: {fileID: 1224693701}
     - target: {fileID: 5378336030365694991, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: bulletsInInventoryText
+      value: 
+      objectReference: {fileID: 1224693700}
+    - target: {fileID: 5976610621228932687, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1824685173}
+    - target: {fileID: 5976610621228932687, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
+      propertyPath: BulletsInMagazine
+      value: 
+      objectReference: {fileID: 1224693701}
+    - target: {fileID: 5976610621228932687, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
+      propertyPath: BulletsInInventory
       value: 
       objectReference: {fileID: 1224693700}
     - target: {fileID: 6185171682899374745, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
@@ -282455,9 +282439,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139987583179271476, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 139987583179271476, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5181282201650900382, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181282201650900382, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8162471123739341342, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_Pivot.x
@@ -294700,10 +294696,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 342312415634705800, guid: 6540353b74521a9478f2b8711d9fd7e7, type: 3}
-      propertyPath: m_Name
-      value: 3DModeling
-      objectReference: {fileID: 0}
     - target: {fileID: 7382543245142578897, guid: 6540353b74521a9478f2b8711d9fd7e7, type: 3}
       propertyPath: m_Name
       value: CutSceneCanvas
@@ -295318,6 +295310,10 @@ PrefabInstance:
     - target: {fileID: 8459295548183907749, guid: 40a3d15de80a6474088f7fc9461a74c2, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459295548183907749, guid: 40a3d15de80a6474088f7fc9461a74c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
