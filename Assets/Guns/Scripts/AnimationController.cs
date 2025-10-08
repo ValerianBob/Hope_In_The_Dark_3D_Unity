@@ -5,34 +5,48 @@ using UnityEngine.InputSystem;
 public class AnimationController : MonoBehaviour
 {
     private Animator _animator;
+    private CharacterMovement _movement;
+    private GunController _gunController;
 
-    public CharacterMovement CharacterMovementScript;
-
-    void Start()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
+        _movement = GetComponentInParent<CharacterMovement>();
+
+        _gunController = GetComponent<GunController>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (!CharacterMovementScript.isMoving)
-        {
-            _animator.SetTrigger("Idle");
-        }
+        UpdateMovement();
+        UpdateReload();
+        UpdateShooting();
+    }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+    private void UpdateMovement()
+    {
+        _animator.SetBool("isWalking", _movement.isMoving);
+        _animator.SetBool("Idle", !_movement.isMoving);
+    }
+
+    private void UpdateShooting()
+    {
+        if (Mouse.current.leftButton.wasPressedThisFrame &&
+            !_gunController.isReloading &&
+            _gunController.currentBulletsInMagasine > 0)
         {
             _animator.SetTrigger("Fire");
         }
+    }
+
+    private void UpdateReload()
+    {
+        Debug.Log(!_gunController.isReloading && _gunController.currentBulletsInMagasine != _gunController.maxBulletsInMagazine);
 
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             _animator.SetTrigger("Reload");
         }
-
-        if (CharacterMovementScript.isMoving)
-        {
-            _animator.SetTrigger("Walk");
-        }
     }
 }
+
