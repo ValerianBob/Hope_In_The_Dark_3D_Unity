@@ -8,6 +8,7 @@ public class SoundsController : MonoBehaviour
     [Header("Sound Clips Settings")]
     public AudioClip[] GunShots;
     public AudioClip[] GunTake;
+    public AudioClip[] GunReload;
     public AudioClip[] Looting;
     public AudioClip[] Environment;
     public AudioClip[] Zombie;
@@ -18,6 +19,7 @@ public class SoundsController : MonoBehaviour
     private AudioSource audioSource;
 
     private AudioSource playerAudioSource;
+    private AudioSource playerReloadSource;
     private AudioSource helicopterAudioSource;
     private AudioSource carAudioSource;
 
@@ -62,6 +64,13 @@ public class SoundsController : MonoBehaviour
             playerAudioSource.maxDistance = soundsDistance;
             playerAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         }
+
+        //Reload
+        playerReloadSource = playerPosition.AddComponent<AudioSource>();
+        playerReloadSource.spatialBlend = 1f;
+        playerReloadSource.minDistance = 1f;
+        playerReloadSource.maxDistance = soundsDistance;
+        playerReloadSource.rolloffMode = AudioRolloffMode.Logarithmic;
 
         //Helicopter
         if (helicopterPosition != null)
@@ -111,6 +120,14 @@ public class SoundsController : MonoBehaviour
     public void PlayGunTake(int index, Vector3 soundPosition)
     {
         AudioSource.PlayClipAtPoint(GunTake[index], soundPosition, currentVolume);
+    }
+
+    public void PlayGunReload(int index)
+    {
+        if (playerReloadSource != null && index < GunReload.Length)
+        {
+            playerReloadSource.PlayOneShot(GunReload[index], currentVolume);
+        }
     }
 
     public void PlayZombie(int index, Vector3 soundPosition)

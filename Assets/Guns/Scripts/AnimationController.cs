@@ -31,7 +31,17 @@ public class AnimationController : MonoBehaviour
 
     private void UpdateShooting()
     {
-        if (_gunController != null)
+        if (_gunController != null && _gunController.isAutoFire)
+        {
+            if (Mouse.current.leftButton.isPressed &&
+            !_gunController.isReloading &&
+            _gunController.currentBulletsInMagasine > 0)
+            {
+                _animator.SetTrigger("Fire");
+            }
+        }
+
+        if (_gunController != null && !_gunController.isAutoFire)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame &&
             !_gunController.isReloading &&
@@ -47,7 +57,6 @@ public class AnimationController : MonoBehaviour
                 _animator.SetTrigger("Fire");
             }
         }
-        
     }
 
     private void UpdateReload()

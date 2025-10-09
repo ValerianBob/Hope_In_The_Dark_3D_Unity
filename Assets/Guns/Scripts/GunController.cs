@@ -22,6 +22,8 @@ public class GunController : MonoBehaviour
 
     public GameObject BloodSpot;
 
+    public LayerMask hitMask;
+
     [Header("Bullets Text Settings")]
     public TextMeshProUGUI bulletsInMagazineText;
     public TextMeshProUGUI bulletsInInventoryText;
@@ -30,7 +32,8 @@ public class GunController : MonoBehaviour
     public int GunDamage;
 
     [Header("Sound index")]
-    public int soundIndex;
+    public int shotSoundIndex;
+    public int reloadSoundIndex;
 
     [Header("Fire Mode")]
     public bool isAutoFire;
@@ -135,6 +138,8 @@ public class GunController : MonoBehaviour
             }
 
             reloadCoroutine = StartCoroutine(Reload());
+            
+            SoundsController.Instance.PlayGunReload(reloadSoundIndex);
         }
     }
 
@@ -151,7 +156,6 @@ public class GunController : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, 1000f))
             {
-                Debug.Log("Hit: " + hit.collider.name + " at " + hit.point);
                 Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
 
                 if (hit.collider.gameObject.GetComponent<ZombieControler>() != null)
@@ -167,12 +171,11 @@ public class GunController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit nothing");
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 2f);
             }
         }
 
-        SoundsController.Instance.PlayGunShot(soundIndex, transform.position);
+        SoundsController.Instance.PlayGunShot(shotSoundIndex, transform.position);
         currentBulletsInMagasine -= 1;
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
 
@@ -197,7 +200,7 @@ public class GunController : MonoBehaviour
 
             Vector3 startPos = Camera.transform.position + Camera.transform.forward * 0.1f;
 
-            if (Physics.Raycast(startPos, direction, out RaycastHit hit, 1000f))
+            if (Physics.Raycast(startPos, direction, out RaycastHit hit, 1000f, hitMask))
             {
                 Debug.DrawRay(startPos, direction * hit.distance, Color.green, 2f);
 
@@ -222,7 +225,7 @@ public class GunController : MonoBehaviour
 
         gunLight.gameObject.SetActive(true);
 
-        SoundsController.Instance.PlayGunShot(soundIndex, transform.position);
+        SoundsController.Instance.PlayGunShot(shotSoundIndex, transform.position);
         currentBulletsInMagasine -= 1;
         bulletsInMagazineText.text = currentBulletsInMagasine.ToString();
 

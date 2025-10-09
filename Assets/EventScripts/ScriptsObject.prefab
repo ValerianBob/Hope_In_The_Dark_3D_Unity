@@ -111,9 +111,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae1df5ec2cef202469428483f6c54fe2, type: 3}
   - {fileID: 8300000, guid: b0c4ffb87a00a2b4782c3fa4e84eaa7a, type: 3}
   - {fileID: 8300000, guid: 18db624d9f3a5bb43850aa1f55879a89, type: 3}
+  - {fileID: 8300000, guid: 2b632fb43158634488d9a886acd9846c, type: 3}
+  - {fileID: 8300000, guid: 26dfe5a9c230fb1478c2067f923fe6c2, type: 3}
+  - {fileID: 8300000, guid: be13f5cac3e75ee40a6f220e486864fe, type: 3}
   GunTake:
   - {fileID: 8300000, guid: 9bbf64cb8483eee4f8a3908e7eab2e50, type: 3}
   - {fileID: 8300000, guid: 478fdc000ed65f04fa0d36d35017c630, type: 3}
+  GunReload:
+  - {fileID: 8300000, guid: 1b7c9c027adbe364e8cb8cc9f76f25fb, type: 3}
+  - {fileID: 8300000, guid: 49c1f0b62f65c1a45975c4a91ff0fb94, type: 3}
+  - {fileID: 8300000, guid: 26ec5ddf285c14741af3fe90fc153b3f, type: 3}
+  - {fileID: 8300000, guid: 5509b449df7fee940a8ac88724b404bc, type: 3}
   Looting:
   - {fileID: 8300000, guid: 936b5f3088968ac4e9e119d11a6ca0bc, type: 3}
   - {fileID: 8300000, guid: ebf51095a891ede4e8933011e781b7d9, type: 3}

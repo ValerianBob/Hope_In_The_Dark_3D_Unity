@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1859928780960678474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -366.613
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.87544
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 453.608
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_Name
+      value: Tec9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      propertyPath: m_TagString
+      value: Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: -1337662063658625187, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3579157635994026633}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6112042483686899700}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7512139884934575527}
+  m_SourcePrefab: {fileID: 100100000, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+--- !u!1 &1517328858941161243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f9bd1177afbfab448dcc2bec61bae38, type: 3}
+  m_PrefabInstance: {fileID: 1859928780960678474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3579157635994026633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517328858941161243}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 24.434662, y: 14.641619, z: 5.7800293}
+  m_Center: {x: -8.361435, y: 0.4818201, z: -6.8573}
+--- !u!114 &6112042483686899700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517328858941161243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04786520091d9bd46931713cc70f7da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunObject: {fileID: 0}
+  GunInfo: Tec9
+  LootInfo: Press E to take gun
+  gunIcon: {fileID: 0}
+  isMainGun: 0
+--- !u!54 &7512139884934575527
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517328858941161243}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
