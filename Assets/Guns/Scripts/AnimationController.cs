@@ -31,18 +31,27 @@ public class AnimationController : MonoBehaviour
 
     private void UpdateShooting()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame &&
+        if (_gunController != null)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame &&
             !_gunController.isReloading &&
             _gunController.currentBulletsInMagasine > 0)
-        {
-            _animator.SetTrigger("Fire");
+            {
+                _animator.SetTrigger("Fire");
+            }
         }
+        else
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                _animator.SetTrigger("Fire");
+            }
+        }
+        
     }
 
     private void UpdateReload()
     {
-        Debug.Log(!_gunController.isReloading && _gunController.currentBulletsInMagasine != _gunController.maxBulletsInMagazine);
-
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             _animator.SetTrigger("Reload");

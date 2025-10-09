@@ -34150,7 +34150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &235409644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238086,7 +238086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4824972199630932298, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5378336030365694991, guid: 7e5fd7d5e66433d4f8e262b592777af7, type: 3}
       propertyPath: inGameMenuController
@@ -282335,11 +282335,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139987583179271476, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139987583179271476, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5181282201650900382, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_Name
@@ -282347,7 +282347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5181282201650900382, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8162471123739341342, guid: ed614a9c886b05a4da78f77dac2d359e, type: 3}
       propertyPath: m_Pivot.x
@@ -295212,7 +295212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459295548183907749, guid: 40a3d15de80a6474088f7fc9461a74c2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
