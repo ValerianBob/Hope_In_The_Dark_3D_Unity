@@ -154,7 +154,7 @@ public class GunController : MonoBehaviour
 
         if (currentBulletsInMagasine != 0)
         {
-            if (Physics.Raycast(ray, out hit, 1000f))
+            if (Physics.Raycast(ray, out hit, 1000f, hitMask))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
 
